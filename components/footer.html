@@ -1,0 +1,137 @@
+
+<footer class="site-footer">
+  <style>
+    .site-footer {
+      background: #090914;
+      color: #aaaabd;
+      padding: 45px 24px 20px;
+      border-top: 1px solid rgba(139, 92, 246, .25);
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand span {
+      color: #a78bfa;
+    }
+
+    .footer-description {
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 320px;
+      color: #88889e;
+    }
+
+    .footer-heading {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-links a {
+      color: #aaaabd;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: #a78bfa;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #242438;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #68687e;
+    }
+
+    @media (max-width: 650px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      .footer-brand-section {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <div class="footer-inner">
+
+    <div class="footer-brand-section">
+      <div class="footer-brand">
+        YOUTUBE AI <span>HUB</span>
+      </div>
+      <p class="footer-description">
+        Your creative workspace for AI-powered YouTube
+        strategy, content creation and channel growth.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-heading">Explore</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="channel-blueprint.html">Channel Blueprint</a>
+        <a href="youtube-launch-lab.html">YouTube Launch Lab</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-heading">Connect</div>
+      <div class="footer-links">
+        <a href="https://x.com/RugZillaToken" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://youtube.com/@jurnaldetatapentrucopiiimeii" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.tiktok.com/@mocanu_catalin_vn" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://open.spotify.com/artist/3NgADM8qEMwO2ZQOswnYrx?si=amDu3RGhQPiy28miv5tXQA" target="_blank" rel="noopener noreferrer">Spotify</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="footer-year"></span> YouTube AI Hub. All rights reserved.</span>
+    <span>Built with AI. Driven by creativity.</span>
+  </div>
+
+  <script>
+    document.getElementById("footer-year").textContent =
+      new Date().getFullYear();
+  </script>
+</footer>
