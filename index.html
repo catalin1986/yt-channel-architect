@@ -153,14 +153,6 @@ h1 span {
   opacity: .65;
 }
 
-footer {
-  border-top: 1px solid var(--border);
-  padding: 25px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-}
-
 @media (max-width: 650px) {
   header { padding: 20px; }
   .header-tag { display: none; }
@@ -220,9 +212,29 @@ footer {
   </section>
 </main>
 
-<footer>
-  YouTube AI Hub · Independent AI creator workspace
-</footer>
+<div id="site-footer"></div>
+
+<script>
+fetch('/components/footer.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Footer could not be loaded.');
+    }
+    return response.text();
+  })
+  .then(html => {
+    const container = document.getElementById('site-footer');
+    container.innerHTML = html;
+
+    const year = container.querySelector('#footer-year');
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+  })
+  .catch(error => {
+    console.error('Footer loading error:', error);
+  });
+</script>
 
 </body>
 </html>
