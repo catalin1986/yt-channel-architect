@@ -196,11 +196,6 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
 }
 .cta h2{font-size:clamp(28px,5vw,42px);margin:0 0 8px}
 .cta p{color:var(--muted);margin:0 0 23px}
-footer{
- border-top:1px solid rgba(255,255,255,.08);
- padding:28px 0;text-align:center;color:#8390aa;font-size:12px;
-}
-footer strong{color:#b7a5ff}
 #status{min-height:24px;font-size:13px;margin-top:12px}
 button:focus-visible,.home-link:focus-visible{
  outline:3px solid #bbaaff;outline-offset:4px;
@@ -368,13 +363,7 @@ button:focus-visible,.home-link:focus-visible{
 </div>
 </main>
 
-<footer>
- <div class="container">
-  <p><strong>Channel Blueprint</strong> · YouTube AI Hub</p>
-  <p>Independent community project. Not affiliated with YouTube, OpenAI or Google.</p>
-  <p style="margin-top:18px"><a class="home-link" href="index.html">← YouTube AI Hub · Home</a></p>
- </div>
-</footer>
+<div id="site-footer"></div>
 
 <script>
 const prompt = `# MASTER PROMPT: YOUTUBE CHANNEL TRANSFORMATION SYSTEM
@@ -558,4 +547,69 @@ Ask only for essential missing information. Clearly identify assumptions.
 
 Execute all eight phases in sequence. After each phase, present the results, explain recommendations, identify decisions requiring approval and preserve decisions for subsequent phases.
 
-Do not automati
+Do not automatically move to the next phase before the user has reviewed the current phase.
+
+## FINAL OBJECTIVE
+
+Deliver a complete, coherent and actionable YouTube channel transformation blueprint.
+
+The final result must be tailored to the channel, consistent across all eight phases, realistic, measurable and ready to implement.
+
+Your goal is not simply to provide ideas. Your goal is to help transform the channel into a recognizable brand with a clear strategy for sustainable growth.
+`;
+
+document.getElementById("promptPreview").textContent = prompt;
+
+async function copyPrompt(){
+ const status = document.getElementById("status");
+
+ try{
+  await navigator.clipboard.writeText(prompt);
+  status.textContent = "✓ Master prompt copied successfully!";
+  status.style.color = "#a8e6b7";
+ }catch(error){
+  const textarea = document.createElement("textarea");
+  textarea.value = prompt;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try{
+   document.execCommand("copy");
+   status.textContent = "✓ Master prompt copied successfully!";
+   status.style.color = "#a8e6b7";
+  }catch(copyError){
+   status.textContent = "Unable to copy automatically. Please select and copy the prompt.";
+   status.style.color = "#ff9999";
+  }
+
+  textarea.remove();
+ }
+}
+</script>
+
+<script>
+fetch('/components/footer.html')
+ .then(response => {
+  if(!response.ok){
+   throw new Error('Footer could not be loaded.');
+  }
+  return response.text();
+ })
+ .then(html => {
+  const container = document.getElementById('site-footer');
+  container.innerHTML = html;
+
+  const year = container.querySelector('#footer-year');
+  if(year){
+   year.textContent = new Date().getFullYear();
+  }
+ })
+ .catch(error => {
+  console.error('Footer loading error:', error);
+ });
+</script>
+
+</body>
+</html>
