@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b16">
+<title>YouTube Launch Lab | YouTube AI Hub</title>
+<meta name="description" content="Research, build, launch, monetize and scale a YouTube channel with a complete AI-powered workflow.">
+
+<style>
+:root{
+ --bg:#080b16;
+ --panel:#11182a;
+ --panel2:#151e33;
+ --purple:#9275ff;
+ --purple2:#6e4cff;
+ --text:#f4f5ff;
+ --muted:#a6b1c8;
+ --border:#29344e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;line-height:1.6;
+ overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;
+ background:
+ radial-gradient(ellipse at 75% 20%,rgba(112,74,255,.13),transparent 40%),
+ radial-gradient(ellipse at 10% 70%,rgba(56,86,180,.09),transparent 35%);
+ z-index:-1;
+}
+.container{width:min(1120px,92%);margin:auto}
+header{
+ border-bottom:1px solid rgba(255,255,255,.08);
+ padding:17px 0;background:rgba(8,11,22,.94);
+}
+.nav{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;flex-wrap:wrap;
+}
+.logo{font-size:19px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--purple)}
+.home-link{
+ color:#c6baff;text-decoration:none;font-size:13px;font-weight:bold;
+ border:1px solid #44366e;padding:9px 13px;border-radius:9px;
+ transition:.2s;
+}
+.home-link:hover{background:#28204a;border-color:var(--purple)}
+.nav-tag{
+ color:#b9aaff;font-size:11px;font-weight:bold;
+ letter-spacing:1.5px;border:1px solid #44366e;
+ padding:7px 12px;border-radius:30px;
+}
+.hero{
+ display:grid;grid-template-columns:1.05fr .95fr;
+ align-items:center;gap:35px;padding:75px 0 65px;
+}
+.tag{
+ color:#ad9aff;font-size:12px;font-weight:bold;
+ letter-spacing:2.5px;text-transform:uppercase;
+}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;margin:18px 0}
+h1 .purple{color:var(--purple)}
+.hero-copy{color:var(--muted);font-size:17px;max-width:510px}
+.hero-copy strong{color:white}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+button{
+ border:0;border-radius:10px;padding:15px 21px;
+ font-weight:800;font-size:13px;cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.primary{
+ background:linear-gradient(110deg,#7252ee,#a184ff);
+ color:white;box-shadow:0 8px 30px rgba(119,83,255,.25);
+}
+.secondary{
+ background:#1b2540;border:1px solid #394663;color:white;
+}
+.hero-note{font-size:12px;color:#8996b0;margin-top:15px}
+.hero-note span{color:#a8e6b7}
+.number-seven{
+ font-size:clamp(35px,5vw,58px);font-weight:900;
+ color:#b5a3ff;text-shadow:0 0 25px rgba(145,117,255,.7);
+}
+.laptop-wrap{position:relative;padding:10px 0 35px}
+.laptop{
+ position:relative;background:#101522;
+ border:3px solid #555c70;border-bottom:5px solid #30394d;
+ border-radius:17px 17px 8px 8px;padding:12px 12px 16px;
+ transform:perspective(1100px) rotateY(-5deg) rotateX(2deg);
+ box-shadow:0 25px 65px rgba(0,0,0,.55),0 0 35px rgba(125,91,255,.12);
+}
+.screen{
+ background:linear-gradient(145deg,#101729,#090d19);
+ border-radius:7px;min-height:350px;padding:17px;overflow:hidden;
+}
+.screen-top{
+ display:flex;justify-content:space-between;align-items:center;
+ border-bottom:1px solid #29334b;padding-bottom:12px;
+ font-size:12px;font-weight:bold;
+}
+.screen-top span{color:var(--purple)}
+.screen-content{padding:24px 8px 10px}
+.screen-content h3{font-size:25px;line-height:1.2;margin:0 0 10px}
+.screen-content p{font-size:12px;color:var(--muted);margin:0 0 17px}
+.screen-play{
+ width:90px;height:65px;border:2px solid #9275ff;
+ border-radius:15px;display:grid;place-items:center;
+ margin:15px auto;color:#ad9aff;font-size:28px;
+ box-shadow:0 0 25px rgba(146,117,255,.2);
+}
+.screen-button{
+ display:block;text-align:center;
+ background:linear-gradient(90deg,#6e4cff,#9b7aff);
+ padding:11px;border-radius:7px;font-size:11px;font-weight:bold;
+ margin:16px auto;max-width:230px;
+}
+.screen-stats{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px;
+}
+.screen-stat{
+ background:#18233a;border:1px solid #2a3651;
+ padding:10px 3px;border-radius:7px;text-align:center;
+ font-size:9px;color:#cbd3e6;
+}
+.screen-stat b{display:block;color:white;font-size:17px}
+.laptop-base{
+ height:17px;margin:0 -25px;
+ background:linear-gradient(180deg,#626a7d,#242b3a 55%,#101522);
+ clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);
+ border-radius:0 0 20px 20px;
+}
+.laptop-glow{
+ position:absolute;inset:25% 10%;background:#7655ff;
+ filter:blur(100px);opacity:.13;z-index:-1;
+}
+.section{padding:65px 0}
+.section-heading{text-align:center;margin-bottom:32px}
+.section-heading h2{font-size:clamp(27px,4vw,38px);margin:0 0 8px}
+.section-heading p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{
+ background:linear-gradient(145deg,#141e33,#101727);
+ border:1px solid var(--border);border-radius:14px;
+ padding:21px;transition:.2s;
+}
+.card:hover{border-color:#8066ed;transform:translateY(-4px)}
+.card-icon{
+ width:42px;height:42px;display:grid;place-items:center;
+ background:#28204a;border:1px solid #493b7c;
+ color:#bbaaff;border-radius:11px;font-size:20px;margin-bottom:14px;
+}
+.card .num{font-size:11px;color:#a58cff;font-weight:bold;letter-spacing:1px}
+.card h3{font-size:16px;margin:4px 0 7px}
+.card p{font-size:13px;color:var(--muted);margin:0}
+.features{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+ background:#111a2c;border:1px solid #303c58;
+ border-radius:16px;padding:22px;
+}
+.feature{display:flex;gap:12px;align-items:center;padding:5px}
+.feature-icon{
+ width:42px;height:42px;flex-shrink:0;border-radius:50%;
+ display:grid;place-items:center;background:#30245b;color:#c8baff;
+ font-size:19px;
+}
+.feature b{display:block;font-size:13px}
+.feature small{color:var(--muted);font-size:11px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{
+ background:#121b2d;border:1px solid var(--border);
+ border-radius:12px;padding:20px;
+}
+.step b{color:#a38aff;font-size:13px}
+.step p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mode{
+ background:#121b2d;border:1px solid var(--border);
+ border-radius:13px;padding:21px;
+}
+.mode h3{margin:0 0 8px;color:#b7a5ff}
+.mode p{color:var(--muted);font-size:13px;margin:0}
+.prompt-section{
+ background:linear-gradient(140deg,#151d34,#0e1423);
+ border:1px solid #394666;border-radius:18px;padding:28px;
+}
+.prompt-section h2{margin:0 0 5px}
+.prompt-section>p{color:var(--muted);font-size:14px}
+.prompt-preview{
+ background:#090e1a;border:1px solid #28344e;
+ border-radius:10px;padding:18px;color:#c6d0e5;
+ font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;
+ max-height:360px;overflow:auto;margin:20px 0;
+}
+.center{text-align:center}
+.cta{
+ text-align:center;padding:65px 20px;
+ background:radial-gradient(ellipse at center,rgba(111,77,255,.17),transparent 70%);
+}
+.cta h2{font-size:clamp(28px,5vw,42px);margin:0 0 8px}
+.cta p{color:var(--muted);margin:0 0 23px}
+footer{
+ border-top:1px solid rgba(255,255,255,.08);
+ padding:28px 0;text-align:center;color:#8390aa;font-size:12px;
+}
+footer strong{color:#b7a5ff}
+#status{min-height:24px;font-size:13px;margin-top:12px}
+button:focus-visible,.home-link:focus-visible{
+ outline:3px solid #bbaaff;outline-offset:4px;
+}
+@media(max-width:850px){
+ .hero{grid-template-columns:1fr;gap:25px;padding:55px 0 35px}
+ .hero-text{text-align:center}
+ .hero-copy{margin:auto}
+ .hero-buttons{justify-content:center}
+ .laptop-wrap{max-width:580px;margin:auto;width:100%}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .container{width:91%}
+ header{padding:16px 0}
+ .logo{font-size:15px}
+ .nav-tag{font-size:9px;padding:6px 9px}
+ .home-link{font-size:11px;padding:8px 10px}
+ .hero{padding:43px 0 25px}
+ h1{font-size:44px}
+ .hero-copy{font-size:15px}
+ .hero-buttons button{width:100%}
+ .screen{min-height:300px;padding:12px}
+ .screen-content{padding-top:18px}
+ .screen-content h3{font-size:20px}
+ .screen-stats{grid-template-columns:repeat(2,1fr)}
+ .laptop{padding:8px 8px 12px}
+ .grid{grid-template-columns:1fr 1fr;gap:9px}
+ .card{padding:14px}
+ .card h3{font-size:14px}
+ .card p{font-size:12px}
+ .card-icon{width:36px;height:36px}
+ .section{padding:45px 0}
+ .features{grid-template-columns:1fr 1fr;padding:13px;gap:10px}
+ .feature{gap:8px}
+ .feature-icon{width:34px;height:34px;font-size:15px}
+ .feature b{font-size:11px}
+ .feature small{font-size:10px}
+ .how-grid,.mode-grid{grid-template-columns:1fr}
+ .prompt-section{padding:19px}
+ .cta{padding:48px 10px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<div class="container nav">
+ <div class="logo">YOUTUBE <span>AI HUB</span></div>
+ <a class="home-link" href="index.html">← YOUTUBE AI HUB</a>
+ <div class="nav-tag">FREE AI TOOL</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+
+<section class="hero">
+<div class="hero-text">
+ <div class="tag">Complete YouTube creation system</div>
+ <h1>YOUTUBE<br><span class="purple">LAUNCH LAB</span></h1>
+ <div class="number-seven">7 Operational Modules</div>
+ <p class="hero-copy">
+  <strong>Research. Build. Launch. Scale.</strong><br>
+  From niche research and channel branding to AI production, monetization and long-term growth.
+ </p>
+ <div class="hero-buttons">
+  <button class="primary" onclick="copyPrompt()">COPY MASTER PROMPT ↗</button>
+  <button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">EXPLORE THE 7 MODULES</button>
+ </div>
+ <div class="hero-note"><span>✓</span> Free-first workflow · No unnecessary subscriptions</div>
+ <div id="status" aria-live="polite"></div>
+</div>
+
+<div class="laptop-wrap">
+ <div class="laptop-glow"></div>
+ <div class="laptop">
+  <div class="screen">
+   <div class="screen-top">
+    <div>YOUTUBE <span>LAUNCH LAB</span></div><div>☰</div>
+   </div>
+   <div class="screen-content">
+    <h3>Build your channel.<br><span style="color:#a58aff">Grow your business.</span></h3>
+    <p>Research, strategy, production<br>and sustainable monetization.</p>
+    <div class="screen-play">▶</div>
+    <div class="screen-button">START YOUR YOUTUBE PROJECT ▢</div>
+    <div class="screen-stats">
+     <div class="screen-stat"><b>7</b>MODULES</div>
+     <div class="screen-stat"><b>AI</b>POWERED</div>
+     <div class="screen-stat"><b>90</b>DAY PLAN</div>
+     <div class="screen-stat"><b>↗</b>SCALING</div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="laptop-base"></div>
+</div>
+</section>
+
+<section class="section" id="modules">
+ <div class="section-heading">
+  <div class="tag">The complete workflow</div>
+  <h2>Seven modules. One YouTube agency.</h2>
+  <p>Build a channel from the first idea to a scalable business.</p>
+ </div>
+ <div class="grid">
+  <div class="card"><div class="card-icon">⌕</div><div class="num">01 · RESEARCH</div><h3>Niche Discovery</h3><p>Compare 10 commercial niches, demand, competition, RPM and production costs.</p></div>
+  <div class="card"><div class="card-icon">✦</div><div class="num">02 · BRANDING</div><h3>Channel Identity</h3><p>Create the name, positioning, visual identity and competitive advantage.</p></div>
+  <div class="card"><div class="card-icon">▦</div><div class="num">03 · STRATEGY</div><h3>90-Day Roadmap</h3><p>Build a publishing calendar with topics, formats and measurable objectives.</p></div>
+  <div class="card"><div class="card-icon">✎</div><div class="num">04 · STORYTELLING</div><h3>Scriptwriting</h3><p>Write complete scripts designed for engagement, retention and watch time.</p></div>
+  <div class="card"><div class="card-icon">▣</div><div class="num">05 · OPTIMIZATION</div><h3>SEO & Thumbnails</h3><p>Prepare titles, descriptions, thumbnail concepts and publishing elements.</p></div>
+  <div class="card"><div class="card-icon">ϟ</div><div class="num">06 · PRODUCTION</div><h3>AI Video Factory</h3><p>Build a repeatable production workflow using free and open-source tools.</p></div>
+  <div class="card"><div class="card-icon">$</div><div class="num">07 · BUSINESS</div><h3>Analytics & Scaling</h3><p>Track performance, develop revenue streams and plan long-term growth.</p></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-heading">
+  <div class="tag">Three ways to work</div>
+  <h2>Strategy. Production. Optimization.</h2>
+  <p>Keep research, creation and performance analysis organized.</p>
+ </div>
+ <div class="mode-grid">
+  <div class="mode">
+   <h3>01 · STRATEGY</h3>
+   <p>Research niches, compare opportunities, validate decisions and build a data-driven plan.</p>
+  </div>
+  <div class="mode">
+   <h3>02 · PRODUCTION</h3>
+   <p>Create scripts, titles, descriptions, AI prompts, editing plans and ready-to-use materials.</p>
+  </div>
+  <div class="mode">
+   <h3>03 · OPTIMIZATION</h3>
+   <p>Analyze real results and improve the strategy according to channel performance.</p>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-heading">
+  <div class="tag">Built for practical results</div><h2>Less guesswork. More structure.</h2>
+ </div>
+ <div class="features">
+  <div class="feature"><div class="feature-icon">⌕</div><div><b>RESEARCH FIRST</b><small>Validate the niche before investing.</small></div></div>
+  <div class="feature"><div class="feature-icon">♙</div><div><b>FREE-FIRST TOOLS</b><small>Prioritize free and open-source options.</small></div></div>
+  <div class="feature"><div class="feature-icon">▢</div><div><b>READY-TO-USE</b><small>Practical deliverables at every stage.</small></div></div>
+  <div class="feature"><div class="feature-icon">◎</div><div><b>MEASURABLE GROWTH</b><small>Decisions based on real performance.</small></div></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-heading">
+  <div class="tag">Getting started</div><h2>Three simple steps.</h2>
+ </div>
+ <div class="how-grid">
+  <div class="step"><b>01 · COPY</b><p>Copy the complete seven-module master prompt.</p></div>
+  <div class="step"><b>02 · PASTE</b><p>Open your preferred AI assistant and paste the prompt.</p></div>
+  <div class="step"><b>03 · BUILD</b><p>Start with Module 1 and validate each stage before moving forward.</p></div>
+ </div>
+</section>
+
+<section class="section" id="full-prompt">
+ <div class="prompt-section">
+  <div class="tag">Ready to use</div>
+  <h2>The complete master prompt.</h2>
+  <p>All seven modules, fundamental rules, operating modes and collaboration protocol.</p>
+  <pre class="prompt-preview" id="promptPreview">Loading complete master prompt...</pre>
+  <div class="center">
+   <button class="primary" onclick="copyPrompt()">COPY FULL MASTER PROMPT ↗</button>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="tag">From idea to YouTube business</div>
+ <h2>Build. Publish. Learn. Scale.</h2>
+ <p>Start with research. Validate every step. Grow with a strategy.</p>
+ <button class="primary" onclick="copyPrompt()">GET THE FREE MASTER PROMPT ↗</button>
+</section>
+
+<section class="center" style="padding:0 0 55px">
+ <a class="home-link" href="index.html">← BACK TO YOUTUBE AI HUB</a>
+</section>
+
+</div>
+</main>
+
+<footer>
+ <div class="container">
+  <p><strong>YouTube Launch Lab</strong> · YouTube AI Hub</p>
+  <p>Independent community project. Not affiliated with YouTube, OpenAI or Google.</p>
+  <p style="margin-top:18px"><a class="home-link" href="index.html">← YouTube AI Hub · Home</a></p>
+ </div>
+</footer>
+
+<script>
+const prompt = `MASTER PROMPT – YOUTUBE AI AGENCY
+
+Sistem complet de creare, lansare, monetizare și dezvoltare a unui canal YouTube
+
+ROLUL TĂU
+
+Acționează ca o agenție profesionistă de YouTube, formată din specialiști în:
+
+- YouTube market research și identificarea nișelor profitabile;
+- Branding și strategie de conținut;
+- SEO și algoritmul YouTube;
+- Copywriting și storytelling;
+- Scenarii cu retenție ridicată;
+- Producție video asistată de inteligență artificială;
+- Editare și optimizare audio-video;
+- Thumbnail design;
+- YouTube Analytics;
+- Monetizare și dezvoltarea veniturilor.
+
+Obiectivul este să construiești și să dezvolți un canal YouTube profitabil, pornind de la zero sau de la un canal existent.
+
+REGULI FUNDAMENTALE
+
+1. Prioritizează instrumentele gratuite și soluțiile open-source.
+2. Nu recomanda abonamente plătite decât dacă există un avantaj concret și justificat.
+3. Nu investi în promovare plătită decât dacă datele demonstrează că este rentabilă.
+4. Nu inventa statistici, venituri, RPM, CPM sau informații despre concurență.
+5. Pentru date actuale, folosește cercetare web și surse verificabile.
+6. Separă datele confirmate de estimări și ipoteze.
+7. Respectă politicile YouTube privind monetizarea, drepturile de autor și conținutul generat cu AI.
+8. Evită conținutul repetitiv, superficial sau produs în masă fără valoare adăugată.
+9. Optimizează pentru retenție, satisfacția publicului și vizualizări organice.
+10. Nu promite monetizare într-un termen fix. Construiește obiective măsurabile și realiste.
+11. Nu trece automat la etapa următoare fără să verifici rezultatele etapei precedente.
+12. Păstrează toate deciziile, informațiile și materialele aprobate pentru a le reutiliza în etapele următoare.
+
+---
+
+CELE 7 MODULE OPERAȚIONALE
+
+MODULUL 1 – RESEARCH ȘI ALEGEREA NIȘEI
+
+Analizează 10 nișe YouTube cu potențial comercial ridicat.
+
+Pentru fiecare nișă prezintă:
+
+- RPM estimat și diferențele între piețele geografice;
+- Cererea și tendințele de căutare;
+- Nivelul concurenței;
+- Dificultatea producției;
+- Costul estimat de producție;
+- Potențialul de vizualizări organice;
+- Posibilități de monetizare suplimentară;
+- Riscurile și dificultățile;
+- Potențialul de dezvoltare pe termen lung.
+
+Compară rezultatele și selectează primele 3 nișe.
+
+Recomandă una singură, explicând de ce este cea mai potrivită oportunitate.
+
+Nu confunda un RPM ridicat cu un venit garantat.
+
+MODULUL 2 – BRANDING ȘI IDENTITATE
+
+Pentru nișa selectată creează:
+
+- 5 variante de nume;
+- Slogan;
+- Descrierea canalului;
+- Profilul publicului țintă;
+- Identitatea vizuală;
+- Conceptul de logo și banner;
+- Tonul comunicării;
+- 4 piloni de conținut;
+- Mecanism unic de diferențiere față de concurență.
+
+Identifică avantajul competitiv și construiește o identitate recognoscibilă.
+
+MODULUL 3 – STRATEGIE ȘI CALENDAR DE 90 DE ZILE
+
+Creează un plan editorial pentru primele 90 de zile.
+
+Include:
+
+- 12 titluri optimizate pentru căutare;
+- Idei suplimentare pentru videoclipuri virale;
+- Frecvența publicării;
+- Distribuția între Shorts și videoclipuri lungi;
+- Strategia de construire a autorității;
+- Ordinea publicării;
+- Obiective săptămânale;
+- Indicatori de performanță.
+
+Separă conținutul destinat traficului din căutări de cel destinat recomandărilor și viralității.
+
+MODULUL 4 – SCRIPTWRITING ȘI STORYTELLING
+
+Pentru fiecare videoclip creează un scenariu complet.
+
+Structură obligatorie:
+
+1. Hook puternic în primele 5–30 de secunde.
+2. Introducerea problemei sau subiectului.
+3. Dezvoltarea subiectului.
+4. Trei sau mai multe idei esențiale.
+5. Exemple și informații concrete.
+6. Momente de reangajare a publicului.
+7. Call to action natural.
+8. Încheiere care face legătura cu următorul videoclip.
+
+Optimizează scenariul pentru retenție și timp de vizionare.
+
+Indică separat:
+
+- Textul naratorului;
+- Imaginile necesare;
+- Secvențele video;
+- Efectele sonore;
+- Muzica;
+- Textele afișate pe ecran.
+
+MODULUL 5 – SEO, THUMBNAILS ȘI PUBLICARE
+
+Pentru fiecare videoclip generează:
+
+- 3 variante de titlu;
+- 3 concepte de miniaturi;
+- Textul recomandat pentru miniatură;
+- Descriere SEO;
+- Cuvinte-cheie relevante;
+- Etichete;
+- Capitole și timestamp-uri;
+- Hashtaguri relevante;
+- Comentariu fixat;
+- Recomandare pentru ecranul final;
+- Variante pentru testarea miniaturilor.
+
+Nu folosi clickbait înșelător. Titlul și miniatura trebuie să corespundă conținutului.
+
+MODULUL 6 – VIDEO PRODUCTION ȘI AUTOMATIZARE AI
+
+Transformă fiecare scenariu într-un plan complet de producție.
+
+Identifică instrumente gratuite pentru:
+
+- Generarea imaginilor;
+- Generarea secvențelor video;
+- Voce AI sau înregistrare vocală;
+- Generarea muzicii și efectelor sonore;
+- Editare video;
+- Subtitrări;
+- Animații și tranziții;
+- Crearea miniaturilor;
+- Programarea publicării.
+
+Pentru fiecare instrument prezintă:
+
+- Numele;
+- Linkul oficial;
+- Ce poate face;
+- Limitele versiunii gratuite;
+- Alternative gratuite;
+- Posibile restricții comerciale.
+
+Construiește un flux de producție repetabil, cu cât mai puțină muncă manuală.
+
+Livrează instrucțiuni concrete, pas cu pas, pentru realizarea fiecărui videoclip.
+
+Nu presupune că un instrument este gratuit doar pentru că permite înregistrarea unui cont.
+
+MODULUL 7 – ANALYTICS, MONETIZARE ȘI SCALARE
+
+Analizează periodic performanța canalului.
+
+Urmărește:
+
+- Vizualizări;
+- Impresii;
+- CTR;
+- Durata medie de vizionare;
+- Retenția publicului;
+- Abonați câștigați;
+- Sursele de trafic;
+- Venituri și RPM, dacă sunt disponibile;
+- Performanța fiecărui format.
+
+Identifică videoclipurile care trebuie:
+
+- Reoptimizate;
+- Continuate printr-o serie;
+- Transformate în Shorts;
+- Folosite ca model pentru alte materiale;
+- Oprite ca direcție editorială.
+
+Construiește strategia de monetizare prin:
+
+1. YouTube Partner Program.
+2. Marketing afiliat.
+3. Sponsorizări.
+4. Produse digitale.
+5. Servicii proprii.
+6. Alte surse relevante nișei.
+
+Prezintă separat condițiile actuale de eligibilitate pentru monetizarea YouTube.
+
+Construiește estimări financiare prudente, moderate și optimiste, bazate pe ipoteze explicite.
+
+La final, oferă un plan de scalare pe următoarele 6–12 luni.
+
+---
+
+MODUL DE LUCRU
+
+Funcționează în 3 moduri:
+
+MODUL STRATEGIE
+Cercetezi, compari și iei decizii fundamentate.
+
+MODUL PRODUCȚIE
+Generezi materiale concrete, gata de utilizare: scenarii, titluri, descrieri, prompturi pentru AI și planuri de montaj.
+
+MODUL OPTIMIZARE
+Analizezi rezultatele reale și modifici strategia în funcție de performanță.
+
+Nu amesteca cele trei moduri fără să fie necesar.
+
+PROTOCOL DE COLABORARE
+
+- Lucrează etapizat.
+- Pune întrebări numai atunci când informațiile lipsă sunt importante.
+- Nu cere utilizatorului să repete informații deja furnizate.
+- Nu genera zeci de materiale înainte de validarea direcției.
+- Salvează în contextul conversației toate deciziile și rezultatele importante.
+- Livrează materiale gata de copiat și utilizat.
+- Explică atunci când o recomandare nu este fezabilă.
+- Nu pretinde că ai publicat, editat sau automatizat ceva dacă nu ai executat efectiv operațiunea.
+
+OBIECTIVUL FINAL
+
+Construiește un canal YouTube care:
+
+- Are o identitate distinctă;
+- Publică regulat conținut original;
+- Atrage trafic organic;
+- Dezvoltă o comunitate;
+- Respectă condițiile de monetizare;
+- Generează venituri din mai multe surse;
+- Poate fi administrat eficient cu ajutorul AI.
+
+Începe prin MODULUL 1. Nu presupune nișa. Solicită utilizatorului informațiile strict necesare și începe cercetarea.`;
+
+document.getElementById("promptPreview").textContent = prompt;
+
+async function copyPrompt(){
+ const status = document.getElementById("status");
+ const buttons = document.querySelectorAll('button[onclick="copyPrompt()"]');
+
+ try{
+  if(navigator.clipboard && window.isSecureContext){
+   await navigator.clipboard.writeText(prompt);
+  }else{
+   const area = document.createElement("textarea");
+   area.value = prompt;
+   area.setAttribute("readonly","");
+   area.style.position = "fixed";
+   area.style.left = "-9999px";
+   document.body.appendChild(area);
+   area.select();
+   const copied = document.execCommand("copy");
+   area.remove();
+   if(!copied) throw new Error("Copy unavailable");
+  }
+
+  status.textContent = "✓ Complete master prompt copied successfully!";
+  status.style.color = "#9bdbad";
+  buttons.forEach(button => {
+   const original = button.textContent;
+   button.textContent = "✓ COPIED!";
+   setTimeout(() => button.textContent = original, 1800);
+  });
+
+ }catch(error){
+  status.textContent = "Copy unavailable. Select and copy the prompt manually below.";
+  status.style.color = "#ffbd8a";
+ }
+}
+</script>
+
+</body>
+</html>
