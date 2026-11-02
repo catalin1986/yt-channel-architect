@@ -7,8 +7,10 @@
 <meta name="theme-color" content="#090d18">
 <title>YT Channel Architect | Free AI YouTube Strategy</title>
 <meta name="description" content="Transform your YouTube channel with one free AI master prompt. Eight strategies for branding, SEO, growth and monetization.">
+
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:#090d18;color:#edf2ff;font-family:Arial,sans-serif;line-height:1.6}
 .container{width:min(900px,92%);margin:auto}
 header{padding:25px 0;border-bottom:1px solid #202a40}
@@ -35,11 +37,13 @@ h2{font-size:27px}
 .steps{background:#121b2d;padding:24px;border-radius:13px}
 .steps li{padding:6px 0;color:#c6d0e3}
 .promptbox{background:#121b2d;border:1px solid #33415e;border-radius:13px;padding:20px}
-.promptbox pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:350px;overflow:auto;color:#c7d2e8;font-family:Arial,sans-serif;font-size:13px}
+.promptbox pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;color:#c7d2e8;font-family:Arial,sans-serif;font-size:13px}
 footer{text-align:center;padding:35px;color:#8290aa;border-top:1px solid #202a40;font-size:13px}
 button:focus-visible{outline:3px solid #b8adff;outline-offset:3px}
+#status{min-height:24px;font-size:14px}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -50,19 +54,24 @@ button:focus-visible{outline:3px solid #b8adff;outline-offset:3px}
 
 <section class="hero">
 <div class="tag">FREE AI YOUTUBE TRANSFORMATION SYSTEM</div>
+
 <h1>One Prompt.<br><span>Eight Strategies.</span></h1>
+
 <p>Transform your YouTube channel into a recognizable, professional brand with one powerful AI master prompt.</p>
 <p>Compatible with ChatGPT, Gemini and other AI assistants.</p>
+
 <div class="buttons">
 <button class="primary" onclick="copyPrompt()">COPY MASTER PROMPT ↗</button>
 <button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">EXPLORE THE 8 MODULES</button>
 </div>
+
 <p id="status" aria-live="polite"></p>
 </section>
 
 <section class="section" id="modules">
 <h2>Everything your YouTube channel needs.</h2>
 <p class="sub">Eight integrated strategies. One complete system.</p>
+
 <div class="grid">
 <div class="card"><div class="number">01</div><h3>Channel Audit</h3><p>Analyze and rebuild your channel profile and positioning.</p></div>
 <div class="card"><div class="number">02</div><h3>SEO Bio Lab</h3><p>Create 10 optimized channel descriptions and rank the best 3.</p></div>
@@ -91,11 +100,10 @@ button:focus-visible{outline:3px solid #b8adff;outline-offset:3px}
 
 <section class="section">
 <h2>The complete master prompt</h2>
-<p class="sub">The full instructions are included in one copy-ready document.</p>
-<div class="promptbox">
-<pre id="promptPreview">YT CHANNEL ARCHITECT — COMPLETE MASTER PROMPT
+<p class="sub">All eight phases and instructions are included below.</p>
 
-Click the button above to copy the entire prompt.</pre>
+<div class="promptbox">
+<pre id="promptPreview"></pre>
 <button class="primary" onclick="copyPrompt()">COPY FULL MASTER PROMPT</button>
 </div>
 </section>
@@ -301,27 +309,34 @@ document.getElementById("promptPreview").textContent = prompt;
 
 async function copyPrompt(){
  const status = document.getElementById("status");
+
  try{
   if(navigator.clipboard && window.isSecureContext){
    await navigator.clipboard.writeText(prompt);
   }else{
-   const area=document.createElement("textarea");
-   area.value=prompt;
-   area.style.position="fixed";
-   area.style.opacity="0";
+   const area = document.createElement("textarea");
+   area.value = prompt;
+   area.setAttribute("readonly","");
+   area.style.position = "fixed";
+   area.style.left = "-9999px";
    document.body.appendChild(area);
    area.select();
-   const ok=document.execCommand("copy");
+
+   const copied = document.execCommand("copy");
    area.remove();
-   if(!ok) throw new Error("Copy unavailable");
+
+   if(!copied) throw new Error("Copy unavailable");
   }
-  status.textContent="✓ Master prompt copied successfully!";
-  status.style.color="#9bdbad";
- }catch(e){
-  status.textContent="Please select and copy the prompt manually.";
-  status.style.color="#ffbd8a";
+
+  status.textContent = "✓ Complete master prompt copied successfully!";
+  status.style.color = "#9bdbad";
+
+ }catch(error){
+  status.textContent = "Copy unavailable. Please select and copy the prompt manually.";
+  status.style.color = "#ffbd8a";
  }
 }
 </script>
+
 </body>
 </html>
