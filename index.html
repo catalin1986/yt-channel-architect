@@ -4,115 +4,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090d18">
-<title>YT Channel Architect | Free AI YouTube Strategy</title>
-<meta name="description" content="Transform your YouTube channel with one free AI master prompt. Eight strategies for branding, SEO, growth and monetization.">
+<meta name="theme-color" content="#080b16">
+<title>YT Channel Architect | Free AI YouTube Growth Tool</title>
+<meta name="description" content="One prompt. Eight strategies. Transform your YouTube channel with a free AI-powered growth system.">
 
 <style>
+:root{
+ --bg:#080b16;
+ --panel:#11182a;
+ --panel2:#151e33;
+ --purple:#9275ff;
+ --purple2:#6e4cff;
+ --text:#f4f5ff;
+ --muted:#a6b1c8;
+ --border:#29344e;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#090d18;color:#edf2ff;font-family:Arial,sans-serif;line-height:1.6}
-.container{width:min(900px,92%);margin:auto}
-header{padding:25px 0;border-bottom:1px solid #202a40}
-.logo{font-size:20px;font-weight:800;letter-spacing:1px}
-.logo span{color:#8b7cff}
-.hero{text-align:center;padding:75px 10px 45px}
-.tag{color:#9d91ff;font-size:12px;font-weight:bold;letter-spacing:2px}
-h1{font-size:clamp(36px,7vw,62px);line-height:1.1;margin:20px 0}
-h1 span{color:#998aff}
-.hero p{color:#aab5cc;max-width:620px;margin:20px auto;font-size:17px}
-button{cursor:pointer;border:0;border-radius:9px;padding:15px 23px;font-size:14px;font-weight:bold}
-.primary{background:#8875ff;color:white}
-.primary:active{transform:scale(.98)}
-.secondary{background:#202b43;color:white}
-.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
-.section{padding:45px 0}
-h2{font-size:27px}
-.sub{color:#aab5cc}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{background:#121b2d;border:1px solid #26334c;padding:20px;border-radius:13px}
-.number{color:#998aff;font-weight:bold;font-size:13px}
-.card h3{margin:7px 0;font-size:17px}
-.card p{color:#aab5cc;font-size:14px;margin:0}
-.steps{background:#121b2d;padding:24px;border-radius:13px}
-.steps li{padding:6px 0;color:#c6d0e3}
-.promptbox{background:#121b2d;border:1px solid #33415e;border-radius:13px;padding:20px}
-.promptbox pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;color:#c7d2e8;font-family:Arial,sans-serif;font-size:13px}
-footer{text-align:center;padding:35px;color:#8290aa;border-top:1px solid #202a40;font-size:13px}
-button:focus-visible{outline:3px solid #b8adff;outline-offset:3px}
-#status{min-height:24px;font-size:14px}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;line-height:1.6;
+ overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;
+ background:
+ radial-gradient(ellipse at 75% 20%,rgba(112,74,255,.13),transparent 40%),
+ radial-gradient(ellipse at 10% 70%,rgba(56,86,180,.09),transparent 35%);
+ z-index:-1;
+}
+.container{width:min(1120px,92%);margin:auto}
+header{
+ border-bottom:1px solid rgba(255,255,255,.08);
+ padding:20px 0;background:rgba(8,11,22,.88);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:19px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--purple)}
+.nav-tag{
+ color:#b9aaff;font-size:11px;font-weight:bold;
+ letter-spacing:1.5px;border:1px solid #44366e;
+ padding:7px 12px;border-radius:30px;
+}
+.hero{
+ display:grid;grid-template-columns:1.05fr .95fr;
+ align-items:center;gap:35px;padding:75px 0 65px;
+}
+.tag{
+ color:#ad9aff;font-size:12px;font-weight:bold;
+ letter-spacing:2.5px;text-transform:uppercase;
+}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;margin:18px 0}
+h1 .purple{color:var(--purple)}
+.hero-copy{color:var(--muted);font-size:17px;max-width:510px}
+.hero-copy strong{color:white}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+button{
+ border:0;border-radius:10px;padding:15px 21px;
+ font-weight:800;font-size:13px;cursor:pointer;
+ transition:.2s;
+}
+button:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.primary{
+ background:linear-gradient(110deg,#7252ee,#a184ff);
+ color:white;box-shadow:0 8px 30px rgba(119,83,255,.25);
+}
+.secondary{
+ background:#1b2540;border:1px solid #394663;color:white;
+}
+.hero-note{font-size:12px;color:#8996b0;margin-top:15px}
+.hero-note span{color:#a8e6b7}
+.number-eight{
+ font-size:clamp(35px,5vw,58px);font-weight:900;
+ color:#b5a3ff;text-shadow:0 0 25px rgba(145,117,255,.7);
+}
+
+/* Laptop mockup */
+.laptop-wrap{position:relative;padding:10px 0 35px}
+.laptop{
+ position:relative;background:#101522;
+ border:3px solid #555c70;border-bottom:5px solid #30394d;
+ border-radius:17px 17px 8px 8px;padding:12px 12px 16px;
+ transform:perspective(1100px) rotateY(-5deg) rotateX(2deg);
+ box-shadow:0 25px 65px rgba(0,0,0,.55),0 0 35px rgba(125,91,255,.12);
+}
+.screen{
+ background:linear-gradient(145deg,#101729,#090d19);
+ border-radius:7px;min-height:350px;padding:17px;
+ overflow:hidden;
+}
+.screen-top{
+ display:flex;justify-content:space-between;align-items:center;
+ border-bottom:1px solid #29334b;padding-bottom:12px;
+ font-size:12px;font-weight:bold;
+}
+.screen-top span{color:var(--purple)}
+.screen-content{padding:24px 8px 10px}
+.screen-content h3{font-size:25px;line-height:1.2;margin:0 0 10px}
+.screen-content p{font-size:12px;color:var(--muted);margin:0 0 17px}
+.screen-play{
+ width:90px;height:65px;border:2px solid #9275ff;
+ border-radius:15px;display:grid;place-items:center;
+ margin:15px auto;color:#ad9aff;font-size:28px;
+ box-shadow:0 0 25px rgba(146,117,255,.2);
+}
+.screen-button{
+ display:block;text-align:center;background:linear-gradient(90deg,#6e4cff,#9b7aff);
+ padding:11px;border-radius:7px;font-size:11px;font-weight:bold;
+ margin:16px auto;max-width:230px;
+}
+.screen-stats{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px;
+}
+.screen-stat{
+ background:#18233a;border:1px solid #2a3651;
+ padding:10px 3px;border-radius:7px;text-align:center;
+ font-size:9px;color:#cbd3e6;
+}
+.screen-stat b{display:block;color:white;font-size:17px}
+.laptop-base{
+ height:17px;margin:0 -25px;
+ background:linear-gradient(180deg,#626a7d,#242b3a 55%,#101522);
+ clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);
+ border-radius:0 0 20px 20px;
+}
+.laptop-glow{
+ position:absolute;inset:25% 10%;background:#7655ff;
+ filter:blur(100px);opacity:.13;z-index:-1;
+}
+
+/* Sections */
+.section{padding:65px 0}
+.section-heading{text-align:center;margin-bottom:32px}
+.section-heading h2{font-size:clamp(27px,4vw,38px);margin:0 0 8px}
+.section-heading p{color:var(--muted);margin:0}
+.grid{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.card{
+ background:linear-gradient(145deg,#141e33,#101727);
+ border:1px solid var(--border);border-radius:14px;
+ padding:21px;transition:.2s;
+}
+.card:hover{border-color:#8066ed;transform:translateY(-4px)}
+.card-icon{
+ width:42px;height:42px;display:grid;place-items:center;
+ background:#28204a;border:1px solid #493b7c;
+ color:#bbaaff;border-radius:11px;font-size:20px;margin-bottom:14px;
+}
+.card .num{font-size:11px;color:#a58cff;font-weight:bold;letter-spacing:1px}
+.card h3{font-size:16px;margin:4px 0 7px}
+.card p{font-size:13px;color:var(--muted);margin:0}
+.features{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+ background:#111a2c;border:1px solid #303c58;
+ border-radius:16px;padding:22px;
+}
+.feature{display:flex;gap:12px;align-items:center;padding:5px}
+.feature-icon{
+ width:42px;height:42px;flex-shrink:0;border-radius:50%;
+ display:grid;place-items:center;background:#30245b;color:#c8baff;
+ font-size:19px;
+}
+.feature b{display:block;font-size:13px}
+.feature small{color:var(--muted);font-size:11px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{
+ background:#121b2d;border:1px solid var(--border);
+ border-radius:12px;padding:20px;
+}
+.step b{color:#a38aff;font-size:13px}
+.step p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.prompt-section{
+ background:linear-gradient(140deg,#151d34,#0e1423);
+ border:1px solid #394666;border-radius:18px;padding:28px;
+}
+.prompt-section h2{margin:0 0 5px}
+.prompt-section>p{color:var(--muted);font-size:14px}
+.prompt-preview{
+ background:#090e1a;border:1px solid #28344e;
+ border-radius:10px;padding:18px;color:#c6d0e5;
+ font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;
+ max-height:260px;overflow:auto;margin:20px 0;
+}
+.center{text-align:center}
+.cta{
+ text-align:center;padding:65px 20px;
+ background:radial-gradient(ellipse at center,rgba(111,77,255,.17),transparent 70%);
+}
+.cta h2{font-size:clamp(28px,5vw,42px);margin:0 0 8px}
+.cta p{color:var(--muted);margin:0 0 23px}
+footer{
+ border-top:1px solid rgba(255,255,255,.08);
+ padding:28px 0;text-align:center;color:#8390aa;font-size:12px;
+}
+footer strong{color:#b7a5ff}
+#status{min-height:24px;font-size:13px;margin-top:12px}
+button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
+
+@media(max-width:850px){
+ .hero{grid-template-columns:1fr;gap:25px;padding:55px 0 35px}
+ .hero-text{text-align:center}
+ .hero-copy{margin:auto}
+ .hero-buttons{justify-content:center}
+ .laptop-wrap{max-width:580px;margin:auto;width:100%}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .container{width:91%}
+ header{padding:16px 0}
+ .logo{font-size:15px}
+ .nav-tag{font-size:9px;padding:6px 9px}
+ .hero{padding:43px 0 25px}
+ h1{font-size:44px}
+ .hero-copy{font-size:15px}
+ .hero-buttons button{width:100%}
+ .screen{min-height:300px;padding:12px}
+ .screen-content{padding-top:18px}
+ .screen-content h3{font-size:20px}
+ .screen-stats{grid-template-columns:repeat(2,1fr)}
+ .laptop{padding:8px 8px 12px}
+ .grid{grid-template-columns:1fr 1fr;gap:9px}
+ .card{padding:14px}
+ .card h3{font-size:14px}
+ .card p{font-size:12px}
+ .card-icon{width:36px;height:36px}
+ .section{padding:45px 0}
+ .features{grid-template-columns:1fr 1fr;padding:13px;gap:10px}
+ .feature{gap:8px}
+ .feature-icon{width:34px;height:34px;font-size:15px}
+ .feature b{font-size:11px}
+ .feature small{font-size:10px}
+ .how-grid{grid-template-columns:1fr}
+ .prompt-section{padding:19px}
+ .cta{padding:48px 10px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="container logo">YT <span>CHANNEL ARCHITECT</span></div>
+<div class="container nav">
+ <div class="logo">YT <span>CHANNEL ARCHITECT</span></div>
+ <div class="nav-tag">100% FREE AI TOOL</div>
+</div>
 </header>
 
-<main class="container">
+<main>
 
+<div class="container">
 <section class="hero">
-<div class="tag">FREE AI YOUTUBE TRANSFORMATION SYSTEM</div>
 
-<h1>One Prompt.<br><span>Eight Strategies.</span></h1>
+<div class="hero-text">
+ <div class="tag">Introducing · Free AI YouTube System</div>
+ <h1>YT CHANNEL<br><span class="purple">ARCHITECT</span></h1>
+ <div class="number-eight">8 Complete Strategies</div>
 
-<p>Transform your YouTube channel into a recognizable, professional brand with one powerful AI master prompt.</p>
-<p>Compatible with ChatGPT, Gemini and other AI assistants.</p>
+ <p class="hero-copy">
+ <strong>One Prompt. Eight Strategies.</strong><br>
+ A Better YouTube Channel.<br><br>
+ Transform your channel with one FREE AI-powered master prompt. Built for creators. Powered by AI.
+ </p>
 
-<div class="buttons">
-<button class="primary" onclick="copyPrompt()">COPY MASTER PROMPT ↗</button>
-<button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">EXPLORE THE 8 MODULES</button>
+ <div class="hero-buttons">
+  <button class="primary" onclick="copyPrompt()">COPY MASTER PROMPT ↗</button>
+  <button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">EXPLORE THE 8 STRATEGIES</button>
+ </div>
+ <div class="hero-note"><span>✓</span> No subscriptions · No hidden costs · No setup</div>
+ <div id="status" aria-live="polite"></div>
 </div>
 
-<p id="status" aria-live="polite"></p>
+<div class="laptop-wrap">
+ <div class="laptop-glow"></div>
+ <div class="laptop">
+  <div class="screen">
+   <div class="screen-top">
+    <div>YT CHANNEL <span>ARCHITECT</span></div>
+    <div>☰</div>
+   </div>
+   <div class="screen-content">
+    <h3>Transform your<br><span style="color:#a58aff">YouTube channel.</span></h3>
+    <p>Professional branding, better content,<br>more subscribers and sustainable growth.</p>
+    <div class="screen-play">▶</div>
+    <div class="screen-button">COPY MASTER PROMPT ▢</div>
+    <div class="screen-stats">
+     <div class="screen-stat"><b>8</b>STRATEGIES</div>
+     <div class="screen-stat"><b>✦</b>AI POWERED</div>
+     <div class="screen-stat"><b>↗</b>GROWTH</div>
+     <div class="screen-stat"><b>∞</b>CREATOR FRIENDLY</div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="laptop-base"></div>
+</div>
+
 </section>
 
 <section class="section" id="modules">
-<h2>Everything your YouTube channel needs.</h2>
-<p class="sub">Eight integrated strategies. One complete system.</p>
+ <div class="section-heading">
+  <div class="tag">The complete system</div>
+  <h2>Everything your channel needs.</h2>
+  <p>Eight integrated strategies. One complete growth system.</p>
+ </div>
 
-<div class="grid">
-<div class="card"><div class="number">01</div><h3>Channel Audit</h3><p>Analyze and rebuild your channel profile and positioning.</p></div>
-<div class="card"><div class="number">02</div><h3>SEO Bio Lab</h3><p>Create 10 optimized channel descriptions and rank the best 3.</p></div>
-<div class="card"><div class="number">03</div><h3>Visual Banner Architect</h3><p>Design your banner, colors, typography and visual composition.</p></div>
-<div class="card"><div class="number">04</div><h3>Strategic Playlists</h3><p>Build four playlists designed for discovery and continued viewing.</p></div>
-<div class="card"><div class="number">05</div><h3>Channel Trailer</h3><p>Create a compelling 60-second introduction for new visitors.</p></div>
-<div class="card"><div class="number">06</div><h3>Visual Identity</h3><p>Develop your channel icon, colors and recognizable brand identity.</p></div>
-<div class="card"><div class="number">07</div><h3>Monetization Funnel</h3><p>Turn viewers into subscribers and eventually customers.</p></div>
-<div class="card"><div class="number">08</div><h3>Growth Auditor</h3><p>Analyze performance, identify opportunities and build a growth plan.</p></div>
-</div>
+ <div class="grid">
+  <div class="card"><div class="card-icon">⌕</div><div class="num">01 · STRATEGY</div><h3>Channel Audit</h3><p>Analyze and rebuild your channel profile, positioning and brand.</p></div>
+  <div class="card"><div class="card-icon">✎</div><div class="num">02 · SEO</div><h3>SEO Bio Lab</h3><p>Create 10 optimized descriptions and identify the strongest version.</p></div>
+  <div class="card"><div class="card-icon">▧</div><div class="num">03 · DESIGN</div><h3>Visual Banner</h3><p>Build a professional banner, colors, typography and composition.</p></div>
+  <div class="card"><div class="card-icon">☷</div><div class="num">04 · CONTENT</div><h3>Strategic Playlists</h3><p>Design four playlists for discovery, viewing and retention.</p></div>
+  <div class="card"><div class="card-icon">▣</div><div class="num">05 · VIDEO</div><h3>Channel Trailer</h3><p>Create a powerful 60-second introduction for new visitors.</p></div>
+  <div class="card"><div class="card-icon">✺</div><div class="num">06 · BRANDING</div><h3>Visual Identity</h3><p>Develop your channel icon, colors and recognizable identity.</p></div>
+  <div class="card"><div class="card-icon">$</div><div class="num">07 · REVENUE</div><h3>Monetization Funnel</h3><p>Build an ethical strategy to turn viewers into customers.</p></div>
+  <div class="card"><div class="card-icon">↗</div><div class="num">08 · ANALYTICS</div><h3>Growth Auditor</h3><p>Analyze performance, find opportunities and create a growth plan.</p></div>
+ </div>
 </section>
 
 <section class="section">
-<h2>How to use it</h2>
-<div class="steps">
-<ol>
-<li>Copy the complete master prompt.</li>
-<li>Open ChatGPT or Gemini.</li>
-<li>Paste the prompt into a new conversation.</li>
-<li>Provide your YouTube channel URL and basic information.</li>
-<li>Let the AI execute the eight phases in sequence.</li>
-<li>Review the recommendations and implement them.</li>
-</ol>
-</div>
+ <div class="section-heading">
+  <div class="tag">Why use it?</div>
+  <h2>Powerful. Simple. Free.</h2>
+ </div>
+
+ <div class="features">
+  <div class="feature"><div class="feature-icon">ϟ</div><div><b>AI POWERED</b><small>Leverage AI for smarter growth.</small></div></div>
+  <div class="feature"><div class="feature-icon">♙</div><div><b>100% FREE</b><small>No subscriptions or hidden costs.</small></div></div>
+  <div class="feature"><div class="feature-icon">▢</div><div><b>EASY TO USE</b><small>Copy, paste and get started.</small></div></div>
+  <div class="feature"><div class="feature-icon">◎</div><div><b>RESULTS DRIVEN</b><small>Built around measurable growth.</small></div></div>
+ </div>
 </section>
 
 <section class="section">
-<h2>The complete master prompt</h2>
-<p class="sub">All eight phases and instructions are included below.</p>
-
-<div class="promptbox">
-<pre id="promptPreview"></pre>
-<button class="primary" onclick="copyPrompt()">COPY FULL MASTER PROMPT</button>
-</div>
+ <div class="section-heading">
+  <div class="tag">Getting started</div>
+  <h2>Three simple steps.</h2>
+ </div>
+ <div class="how-grid">
+  <div class="step"><b>01 · COPY</b><p>Copy the complete master prompt with one click.</p></div>
+  <div class="step"><b>02 · PASTE</b><p>Open ChatGPT, Gemini or another AI assistant and paste it.</p></div>
+  <div class="step"><b>03 · TRANSFORM</b><p>Share your channel information and work through all eight phases.</p></div>
+ </div>
 </section>
 
+<section class="section" id="full-prompt">
+ <div class="prompt-section">
+  <div class="tag">Ready to use</div>
+  <h2>The complete master prompt.</h2>
+  <p>All eight phases, global rules and execution instructions in one copy-ready document.</p>
+  <pre class="prompt-preview" id="promptPreview">Loading complete master prompt...</pre>
+  <div class="center">
+   <button class="primary" onclick="copyPrompt()">COPY FULL MASTER PROMPT ↗</button>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="tag">Your channel. Your next chapter.</div>
+ <h2>Start transforming today.</h2>
+ <p>One prompt can give your YouTube strategy a whole new direction.</p>
+ <button class="primary" onclick="copyPrompt()">GET THE FREE MASTER PROMPT ↗</button>
+</section>
+
+</div>
 </main>
 
 <footer>
-<p>YT Channel Architect · Free AI Strategy Tool</p>
-<p>Independent community project. Not affiliated with YouTube, OpenAI or Google.</p>
+ <div class="container">
+  <p><strong>YT Channel Architect</strong> · Free AI Strategy Tool</p>
+  <p>Independent community project. Not affiliated with YouTube, OpenAI or Google.</p>
+ </div>
 </footer>
 
 <script>
@@ -309,31 +571,26 @@ document.getElementById("promptPreview").textContent = prompt;
 
 async function copyPrompt(){
  const status = document.getElementById("status");
-
  try{
   if(navigator.clipboard && window.isSecureContext){
    await navigator.clipboard.writeText(prompt);
   }else{
-   const area = document.createElement("textarea");
-   area.value = prompt;
+   const area=document.createElement("textarea");
+   area.value=prompt;
    area.setAttribute("readonly","");
-   area.style.position = "fixed";
-   area.style.left = "-9999px";
+   area.style.position="fixed";
+   area.style.left="-9999px";
    document.body.appendChild(area);
    area.select();
-
-   const copied = document.execCommand("copy");
+   const copied=document.execCommand("copy");
    area.remove();
-
    if(!copied) throw new Error("Copy unavailable");
   }
-
-  status.textContent = "✓ Complete master prompt copied successfully!";
-  status.style.color = "#9bdbad";
-
+  status.textContent="✓ Complete master prompt copied successfully!";
+  status.style.color="#9bdbad";
  }catch(error){
-  status.textContent = "Copy unavailable. Please select and copy the prompt manually.";
-  status.style.color = "#ffbd8a";
+  status.textContent="Copy unavailable. Select and copy the prompt manually below.";
+  status.style.color="#ffbd8a";
  }
 }
 </script>
