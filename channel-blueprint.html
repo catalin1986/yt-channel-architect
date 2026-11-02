@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b16">
-<title>YT Channel Architect | Free AI YouTube Growth Tool</title>
-<meta name="description" content="One prompt. Eight strategies. Transform your YouTube channel with a free AI-powered growth system.">
+<title>Channel Blueprint | YouTube AI Hub</title>
+<meta name="description" content="Transform, optimize and grow your YouTube channel with eight AI-powered strategies.">
 
 <style>
 :root{
@@ -36,11 +36,20 @@ body:before{
 .container{width:min(1120px,92%);margin:auto}
 header{
  border-bottom:1px solid rgba(255,255,255,.08);
- padding:20px 0;background:rgba(8,11,22,.88);
+ padding:17px 0;background:rgba(8,11,22,.94);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.nav{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;flex-wrap:wrap;
+}
 .logo{font-size:19px;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--purple)}
+.home-link{
+ color:#c6baff;text-decoration:none;font-size:13px;font-weight:bold;
+ border:1px solid #44366e;padding:9px 13px;border-radius:9px;
+ transition:.2s;
+}
+.home-link:hover{background:#28204a;border-color:var(--purple)}
 .nav-tag{
  color:#b9aaff;font-size:11px;font-weight:bold;
  letter-spacing:1.5px;border:1px solid #44366e;
@@ -61,8 +70,7 @@ h1 .purple{color:var(--purple)}
 .hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 button{
  border:0;border-radius:10px;padding:15px 21px;
- font-weight:800;font-size:13px;cursor:pointer;
- transition:.2s;
+ font-weight:800;font-size:13px;cursor:pointer;transition:.2s;
 }
 button:hover{transform:translateY(-2px);filter:brightness(1.12)}
 .primary{
@@ -78,8 +86,6 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
  font-size:clamp(35px,5vw,58px);font-weight:900;
  color:#b5a3ff;text-shadow:0 0 25px rgba(145,117,255,.7);
 }
-
-/* Laptop mockup */
 .laptop-wrap{position:relative;padding:10px 0 35px}
 .laptop{
  position:relative;background:#101522;
@@ -90,8 +96,7 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
 }
 .screen{
  background:linear-gradient(145deg,#101729,#090d19);
- border-radius:7px;min-height:350px;padding:17px;
- overflow:hidden;
+ border-radius:7px;min-height:350px;padding:17px;overflow:hidden;
 }
 .screen-top{
  display:flex;justify-content:space-between;align-items:center;
@@ -109,7 +114,8 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
  box-shadow:0 0 25px rgba(146,117,255,.2);
 }
 .screen-button{
- display:block;text-align:center;background:linear-gradient(90deg,#6e4cff,#9b7aff);
+ display:block;text-align:center;
+ background:linear-gradient(90deg,#6e4cff,#9b7aff);
  padding:11px;border-radius:7px;font-size:11px;font-weight:bold;
  margin:16px auto;max-width:230px;
 }
@@ -132,15 +138,11 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
  position:absolute;inset:25% 10%;background:#7655ff;
  filter:blur(100px);opacity:.13;z-index:-1;
 }
-
-/* Sections */
 .section{padding:65px 0}
 .section-heading{text-align:center;margin-bottom:32px}
 .section-heading h2{font-size:clamp(27px,4vw,38px);margin:0 0 8px}
 .section-heading p{color:var(--muted);margin:0}
-.grid{
- display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{
  background:linear-gradient(145deg,#141e33,#101727);
  border:1px solid var(--border);border-radius:14px;
@@ -185,7 +187,7 @@ button:hover{transform:translateY(-2px);filter:brightness(1.12)}
  background:#090e1a;border:1px solid #28344e;
  border-radius:10px;padding:18px;color:#c6d0e5;
  font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;
- max-height:260px;overflow:auto;margin:20px 0;
+ max-height:360px;overflow:auto;margin:20px 0;
 }
 .center{text-align:center}
 .cta{
@@ -200,8 +202,9 @@ footer{
 }
 footer strong{color:#b7a5ff}
 #status{min-height:24px;font-size:13px;margin-top:12px}
-button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
-
+button:focus-visible,.home-link:focus-visible{
+ outline:3px solid #bbaaff;outline-offset:4px;
+}
 @media(max-width:850px){
  .hero{grid-template-columns:1fr;gap:25px;padding:55px 0 35px}
  .hero-text{text-align:center}
@@ -216,6 +219,7 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
  header{padding:16px 0}
  .logo{font-size:15px}
  .nav-tag{font-size:9px;padding:6px 9px}
+ .home-link{font-size:11px;padding:8px 10px}
  .hero{padding:43px 0 25px}
  h1{font-size:44px}
  .hero-copy{font-size:15px}
@@ -244,30 +248,26 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
 </head>
 
 <body>
-
 <header>
 <div class="container nav">
- <div class="logo">YT <span>CHANNEL ARCHITECT</span></div>
- <div class="nav-tag">100% FREE AI TOOL</div>
+ <div class="logo">YOUTUBE <span>AI HUB</span></div>
+ <a class="home-link" href="index.html">← YOUTUBE AI HUB</a>
+ <div class="nav-tag">FREE AI TOOL</div>
 </div>
 </header>
 
 <main>
-
 <div class="container">
+
 <section class="hero">
-
 <div class="hero-text">
- <div class="tag">Introducing · Free AI YouTube System</div>
- <h1>YT CHANNEL<br><span class="purple">ARCHITECT</span></h1>
+ <div class="tag">Channel development system</div>
+ <h1>CHANNEL<br><span class="purple">BLUEPRINT</span></h1>
  <div class="number-eight">8 Complete Strategies</div>
-
  <p class="hero-copy">
- <strong>One Prompt. Eight Strategies.</strong><br>
- A Better YouTube Channel.<br><br>
- Transform your channel with one FREE AI-powered master prompt. Built for creators. Powered by AI.
+  <strong>One Prompt. Eight Strategies.</strong><br>
+  Transform, optimize and grow your YouTube channel with a structured AI-powered system.
  </p>
-
  <div class="hero-buttons">
   <button class="primary" onclick="copyPrompt()">COPY MASTER PROMPT ↗</button>
   <button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">EXPLORE THE 8 STRATEGIES</button>
@@ -281,8 +281,7 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
  <div class="laptop">
   <div class="screen">
    <div class="screen-top">
-    <div>YT CHANNEL <span>ARCHITECT</span></div>
-    <div>☰</div>
+    <div>CHANNEL <span>BLUEPRINT</span></div><div>☰</div>
    </div>
    <div class="screen-content">
     <h3>Transform your<br><span style="color:#a58aff">YouTube channel.</span></h3>
@@ -300,7 +299,6 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
  </div>
  <div class="laptop-base"></div>
 </div>
-
 </section>
 
 <section class="section" id="modules">
@@ -309,7 +307,6 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
   <h2>Everything your channel needs.</h2>
   <p>Eight integrated strategies. One complete growth system.</p>
  </div>
-
  <div class="grid">
   <div class="card"><div class="card-icon">⌕</div><div class="num">01 · STRATEGY</div><h3>Channel Audit</h3><p>Analyze and rebuild your channel profile, positioning and brand.</p></div>
   <div class="card"><div class="card-icon">✎</div><div class="num">02 · SEO</div><h3>SEO Bio Lab</h3><p>Create 10 optimized descriptions and identify the strongest version.</p></div>
@@ -324,10 +321,8 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
 
 <section class="section">
  <div class="section-heading">
-  <div class="tag">Why use it?</div>
-  <h2>Powerful. Simple. Free.</h2>
+  <div class="tag">Why use it?</div><h2>Powerful. Simple. Free.</h2>
  </div>
-
  <div class="features">
   <div class="feature"><div class="feature-icon">ϟ</div><div><b>AI POWERED</b><small>Leverage AI for smarter growth.</small></div></div>
   <div class="feature"><div class="feature-icon">♙</div><div><b>100% FREE</b><small>No subscriptions or hidden costs.</small></div></div>
@@ -338,8 +333,7 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
 
 <section class="section">
  <div class="section-heading">
-  <div class="tag">Getting started</div>
-  <h2>Three simple steps.</h2>
+  <div class="tag">Getting started</div><h2>Three simple steps.</h2>
  </div>
  <div class="how-grid">
   <div class="step"><b>01 · COPY</b><p>Copy the complete master prompt with one click.</p></div>
@@ -367,13 +361,18 @@ button:focus-visible{outline:3px solid #bbaaff;outline-offset:4px}
  <button class="primary" onclick="copyPrompt()">GET THE FREE MASTER PROMPT ↗</button>
 </section>
 
+<section class="center" style="padding:0 0 55px">
+ <a class="home-link" href="index.html">← BACK TO YOUTUBE AI HUB</a>
+</section>
+
 </div>
 </main>
 
 <footer>
  <div class="container">
-  <p><strong>YT Channel Architect</strong> · Free AI Strategy Tool</p>
+  <p><strong>Channel Blueprint</strong> · YouTube AI Hub</p>
   <p>Independent community project. Not affiliated with YouTube, OpenAI or Google.</p>
+  <p style="margin-top:18px"><a class="home-link" href="index.html">← YouTube AI Hub · Home</a></p>
  </div>
 </footer>
 
@@ -559,41 +558,4 @@ Ask only for essential missing information. Clearly identify assumptions.
 
 Execute all eight phases in sequence. After each phase, present the results, explain recommendations, identify decisions requiring approval and preserve decisions for subsequent phases.
 
-Do not automatically change branding or publish content.
-
-At the end, produce a unified implementation roadmap with priorities, estimated difficulty, free tools and measurable objectives.
-
-## FINAL OBJECTIVE
-
-Transform the channel into a coherent, recognizable, search-optimized, audience-focused YouTube brand with a practical and measurable organic growth strategy.`;
-
-document.getElementById("promptPreview").textContent = prompt;
-
-async function copyPrompt(){
- const status = document.getElementById("status");
- try{
-  if(navigator.clipboard && window.isSecureContext){
-   await navigator.clipboard.writeText(prompt);
-  }else{
-   const area=document.createElement("textarea");
-   area.value=prompt;
-   area.setAttribute("readonly","");
-   area.style.position="fixed";
-   area.style.left="-9999px";
-   document.body.appendChild(area);
-   area.select();
-   const copied=document.execCommand("copy");
-   area.remove();
-   if(!copied) throw new Error("Copy unavailable");
-  }
-  status.textContent="✓ Complete master prompt copied successfully!";
-  status.style.color="#9bdbad";
- }catch(error){
-  status.textContent="Copy unavailable. Select and copy the prompt manually below.";
-  status.style.color="#ffbd8a";
- }
-}
-</script>
-
-</body>
-</html>
+Do not automati
