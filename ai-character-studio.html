@@ -1,0 +1,1300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<meta name="description" content="AI Character Studio — Learn ComfyUI, create consistent AI characters, build universal prompts and explore creator monetization.">
+<title>AI Character Studio | YouTube AI Hub</title>
+
+<style>
+:root {
+  --bg:#090b14;
+  --surface:#111525;
+  --surface2:#171d30;
+  --border:#29314a;
+  --text:#f4f5fb;
+  --muted:#a1a9bd;
+  --accent:#a78bfa;
+  --accent2:#6d8cff;
+  --yellow:#f4cc75;
+  --green:#67d6a0;
+  --radius:17px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Arial,sans-serif;
+  line-height:1.65;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(9,11,20,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  min-height:70px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{font-weight:900;letter-spacing:1px;font-size:17px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:19px;align-items:center}
+.nav-links a{font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:white}
+.menu-toggle{
+  display:none;background:var(--surface2);
+  color:white;border:1px solid var(--border);
+  padding:8px 12px;border-radius:9px;
+}
+.hero{
+  padding:92px 0 75px;
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(119,91,213,.24),transparent 60%),
+    linear-gradient(180deg,#101326 0%,var(--bg) 100%);
+}
+.eyebrow{
+  color:var(--accent);font-size:12px;font-weight:800;
+  letter-spacing:2.5px;text-transform:uppercase;
+}
+.hero h1{
+  font-size:clamp(38px,7vw,70px);
+  line-height:1.08;letter-spacing:-2px;
+  margin:20px auto;max-width:900px;
+}
+.gradient{
+  background:linear-gradient(90deg,#c4a5ff,#83a4ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{
+  color:var(--muted);max-width:720px;
+  margin:0 auto 28px;font-size:17px;
+}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:10px;font-weight:750;
+  font-size:14px;border:1px solid transparent;
+  transition:.2s;
+}
+.btn-primary{background:linear-gradient(100deg,#9270ef,#6487f5);color:white}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.btn-outline{border-color:var(--border);background:var(--surface);color:white}
+.btn-outline:hover{border-color:var(--accent)}
+section{padding:66px 0}
+.section-heading{text-align:center;margin-bottom:35px}
+.section-heading h2{font-size:clamp(27px,4vw,39px);margin:8px 0}
+.section-heading p{color:var(--muted);max-width:720px;margin:auto}
+.section-label{
+  color:var(--accent);font-size:11px;
+  font-weight:850;letter-spacing:2px;text-transform:uppercase;
+}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;
+}
+.card h3{font-size:19px;margin-bottom:9px}
+.card p{color:var(--muted);font-size:14px}
+.card-icon{
+  width:43px;height:43px;border-radius:12px;
+  background:#242044;display:grid;place-items:center;
+  font-size:21px;margin-bottom:15px;
+}
+.feature-list{list-style:none;margin-top:13px}
+.feature-list li{
+  color:var(--muted);font-size:14px;padding:5px 0;
+}
+.feature-list li::before{content:"✓";color:var(--green);margin-right:9px;font-weight:bold}
+.notice{
+  border:1px solid #514574;background:#19152b;
+  padding:17px 20px;border-radius:13px;
+  color:#d8d1f0;font-size:14px;margin:22px 0;
+}
+.notice strong{color:white}
+.prompt-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:15px;margin:18px 0;overflow:hidden;
+}
+.prompt-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:12px;flex-wrap:wrap;
+  padding:17px 20px;background:var(--surface2);
+  border-bottom:1px solid var(--border);
+}
+.prompt-top h3{font-size:16px}
+.prompt-tag{
+  font-size:10px;color:var(--accent);
+  letter-spacing:1px;font-weight:800;
+}
+.prompt-body{padding:19px 20px}
+.prompt-body p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.prompt-text{
+  white-space:pre-wrap;overflow-wrap:anywhere;
+  color:#dce1f0;font-size:13px;line-height:1.75;
+  background:#090d19;border:1px solid #222b40;
+  padding:17px;border-radius:10px;
+  max-height:390px;overflow:auto;
+}
+.copy-btn{
+  border:1px solid var(--border);background:#272344;
+  color:#e9e3ff;border-radius:8px;padding:8px 13px;
+  font-size:12px;font-weight:750;
+}
+.copy-btn:hover{border-color:var(--accent);background:#332b59}
+.copy-btn.copied{background:#153b30;color:#8ce6b9}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.step{
+  padding:20px;background:var(--surface);
+  border:1px solid var(--border);border-radius:14px;
+}
+.step-number{font-size:12px;color:var(--accent);font-weight:900;letter-spacing:1px}
+.step h3{font-size:17px;margin:8px 0}
+.step p{font-size:13px;color:var(--muted)}
+.info-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:13px}
+.info-table th,.info-table td{
+  padding:12px;text-align:left;border-bottom:1px solid var(--border);
+}
+.info-table th{color:var(--accent);font-weight:800}
+.info-table td{color:var(--muted)}
+.business-panel{
+  background:linear-gradient(140deg,#17172c,#111a2b);
+  border:1px solid #39365c;border-radius:18px;padding:28px;
+}
+.business-panel h3{font-size:23px;margin-bottom:10px}
+.business-panel p{color:var(--muted);font-size:14px}
+.fanvue{
+  background:linear-gradient(135deg,#211a36,#171c32);
+  border:1px solid #544276;border-radius:20px;
+  padding:32px;text-align:center;
+}
+.fanvue h2{font-size:30px;margin:10px 0}
+.fanvue p{color:var(--muted);max-width:680px;margin:0 auto 20px}
+.fanvue-link{
+  display:inline-flex;padding:13px 22px;
+  border-radius:10px;background:#a78bfa;
+  color:#100d1c;font-weight:900;
+}
+.fanvue small{display:block;color:var(--muted);margin-top:14px;font-size:11px}
+.disclaimer{font-size:12px;color:var(--muted);margin-top:20px}
+.back-top{display:block;text-align:center;color:var(--muted);font-size:12px;margin:35px 0}
+footer{border-top:1px solid var(--border);margin-top:35px}
+#site-footer{min-height:30px}
+@media(max-width:800px){
+  .nav-links{
+    display:none;position:absolute;top:70px;left:0;right:0;
+    background:#101321;padding:20px;
+    flex-direction:column;align-items:flex-start;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+  .grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .hero{padding:68px 0 55px}
+  section{padding:48px 0}
+  .grid,.grid.three,.steps{grid-template-columns:1fr}
+  .card{padding:20px}
+  .prompt-top{align-items:flex-start}
+  .business-panel,.fanvue{padding:23px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">YOUTUBE <span>AI HUB</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#comfyui">ComfyUI</a>
+      <a href="#prompts">Masterprompts</a>
+      <a href="#business">Business</a>
+      <a href="#fanvue">Fanvue</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">YouTube AI Hub · Creator Tools</div>
+    <h1>Build Your Own <span class="gradient">AI Character</span></h1>
+    <p>
+      Learn how to create consistent virtual characters, understand ComfyUI,
+      generate professional prompts and develop a digital creator business.
+    </p>
+    <div class="hero-actions">
+      <a href="#prompts" class="btn btn-primary">Explore Masterprompts</a>
+      <a href="#comfyui" class="btn btn-outline">Learn ComfyUI</a>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">The complete guide</div>
+      <h2>From Character to Business</h2>
+      <p>
+        A practical educational hub covering character design, visual
+        consistency, content production and monetization.
+      </p>
+    </div>
+
+    <div class="grid three">
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Create</h3>
+        <p>Develop a recognizable virtual identity with a consistent face, appearance, personality and visual style.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>Understand</h3>
+        <p>Learn the concepts behind ComfyUI, AI models, references, image generation and visual consistency.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📸</div>
+        <h3>Produce</h3>
+        <p>Plan photographs, scenes, short-form videos and a recognizable content identity.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <h3>Prompt</h3>
+        <p>Use reusable masterprompts that can be adapted to different AI tools and models.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Grow</h3>
+        <p>Build an audience, test content formats and develop a sustainable publishing strategy.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h3>Monetize</h3>
+        <p>Explore subscriptions, premium collections, creator platforms and referral opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comfyui">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">Local AI production</div>
+      <h2>Understanding ComfyUI</h2>
+      <p>
+        ComfyUI is a node-based interface for creating and managing AI
+        generation processes. It can run locally on compatible hardware.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>What is ComfyUI?</h3>
+        <p>
+          ComfyUI lets users connect different AI operations through a visual
+          node interface. It provides control over image generation,
+          conditioning, editing and other supported tasks.
+        </p>
+        <ul class="feature-list">
+          <li>Open-source and locally runnable</li>
+          <li>Supports different model families</li>
+          <li>Customizable generation processes</li>
+          <li>Can operate without a paid cloud subscription</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧩</div>
+        <h3>Important concepts</h3>
+        <p>
+          Understanding these concepts makes it easier to work with different
+          models and generation tools.
+        </p>
+        <ul class="feature-list">
+          <li>Checkpoint: the main model used for generation</li>
+          <li>Prompt: textual description of the desired result</li>
+          <li>Seed: controls the random starting point</li>
+          <li>Reference image: visual guidance for identity or composition</li>
+          <li>Sampler: method used to generate the image</li>
+          <li>Upscaling: increasing image resolution and detail</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👤</div>
+        <h3>Character consistency</h3>
+        <p>
+          A written description alone does not guarantee the same face in
+          every generation. Consistency usually requires visual references
+          and compatible identity-preservation techniques.
+        </p>
+        <ul class="feature-list">
+          <li>Build a clear reference sheet</li>
+          <li>Keep defining facial characteristics consistent</li>
+          <li>Reuse reference images where supported</li>
+          <li>Keep lighting and camera descriptions controlled</li>
+          <li>Review results and reject identity drift</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Hardware and performance</h3>
+        <p>
+          Local generation depends on model size, image resolution,
+          precision, available VRAM and system memory.
+        </p>
+        <ul class="feature-list">
+          <li>12 GB VRAM: use appropriately sized models and resolutions</li>
+          <li>Lower resolutions can reduce memory requirements</li>
+          <li>Model quantization can reduce VRAM usage</li>
+          <li>Large video models may require more powerful hardware</li>
+          <li>Upscaling can be performed as a separate step</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Important:</strong> ComfyUI is the interface, not a single AI
+      model. Capabilities, licensing and hardware requirements depend on the
+      models and extensions you choose. Always check the license before
+      commercial use.
+    </div>
+
+    <div class="card">
+      <h3>Popular model families to explore</h3>
+      <table class="info-table">
+        <thead>
+          <tr><th>Technology</th><th>Typical use</th><th>What to check</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SDXL</td><td>Image generation</td><td>Checkpoint and LoRA licenses</td></tr>
+          <tr><td>FLUX</td><td>Image generation and editing</td><td>Model variant and license</td></tr>
+          <tr><td>Stable Diffusion</td><td>Image generation and customization</td><td>Model compatibility</td></tr>
+          <tr><td>Video models</td><td>AI video generation</td><td>VRAM and supported hardware</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice">
+      Official resource:
+      <a href="https://www.comfy.org/" target="_blank" rel="noopener noreferrer"><strong>ComfyUI website ↗</strong></a>
+      ·
+      <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer"><strong>GitHub repository ↗</strong></a>
+    </div>
+  </div>
+</section>
+
+<section id="prompts">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">Copy · Customize · Create</div>
+      <h2>Universal Masterprompts</h2>
+      <p>
+        Reusable prompt frameworks designed to work as a starting point
+        across compatible image, video and language models. Replace the
+        variables and adapt the technical details to your chosen tool.
+      </p>
+    </div>
+
+    <div class="notice">
+      <strong>How to use:</strong> Copy a masterprompt, replace the
+      placeholders in square brackets and provide the necessary reference
+      images. These prompts guide the creative process; they cannot guarantee
+      identical results across different models.
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 01</div>
+          <h3>AI Character Creator</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt1">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Create a complete and original adult virtual character identity.</p>
+        <div class="prompt-text" id="prompt1">Act as an expert AI character designer, digital art director and visual identity specialist.
+
+Create a detailed, original, fictional ADULT AI character.
+
+PROJECT INFORMATION:
+Character concept: [DESCRIBE THE CONCEPT]
+Target audience: [AUDIENCE]
+Visual direction: [PHOTOREALISTIC / EDITORIAL / FASHION / CINEMATIC]
+Age: [25 OR OLDER]
+Personality: [PERSONALITY]
+Brand positioning: [POSITIONING]
+
+DEVELOP THE CHARACTER:
+
+1. IDENTITY
+- Create a fictional name and background.
+- Define an adult age and personality.
+- Describe interests, lifestyle and communication style.
+- Establish a distinctive identity that does not imitate a real person.
+
+2. FACIAL FEATURES
+- Face shape and proportions.
+- Eye shape and color.
+- Eyebrows, nose and lips.
+- Skin tone and natural skin texture.
+- Distinctive but believable identifying features.
+
+3. PHYSICAL APPEARANCE
+- Hair color, length and style.
+- General body proportions.
+- Posture and characteristic expressions.
+- Overall visual presentation.
+
+4. SIGNATURE STYLE
+- Clothing preferences.
+- Accessories and recurring details.
+- Makeup and grooming.
+- Preferred colors and materials.
+
+5. PERSONALITY AND BRAND
+- Personality traits.
+- Voice and communication style.
+- Lifestyle themes.
+- Audience positioning.
+- Three recognizable signature characteristics.
+
+6. VISUAL IDENTITY RULES
+Create a concise description that can be reused in future prompts.
+Separate permanent character traits from changeable scene details.
+
+OUTPUT:
+A complete character profile, a concise visual identity description, a reusable character reference prompt and five original scene concepts.
+
+The character must be fictional and clearly adult. Avoid copying the identity of real people.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 02</div>
+          <h3>Character Sheet & Identity Lock</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt2">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Build a reusable visual reference and consistency guide.</p>
+        <div class="prompt-text" id="prompt2">Act as a professional character continuity supervisor and AI visual identity specialist.
+
+Use the supplied character description and reference images to create a CHARACTER CONSISTENCY DOCUMENT.
+
+CHARACTER:
+[INSERT CHARACTER PROFILE]
+
+REFERENCE MATERIAL:
+[DESCRIBE OR ATTACH AVAILABLE REFERENCE IMAGES]
+
+YOUR TASK:
+
+1. Identify the permanent facial characteristics.
+2. Identify permanent hair characteristics.
+3. Identify defining physical characteristics.
+4. Identify signature accessories and details.
+5. Separate permanent identity traits from temporary styling.
+6. Create a concise identity description for reuse.
+7. Create a checklist for detecting identity drift.
+
+GENERATE:
+
+A. CHARACTER IDENTITY LOCK
+A compact, detailed paragraph describing the features that must remain consistent.
+
+B. REFERENCE SHEET PLAN
+Describe a useful reference sheet:
+- Front-facing portrait.
+- Three-quarter portrait.
+- Side profile.
+- Neutral expression.
+- Smiling expression.
+- Full-body reference.
+- Consistent lighting and camera perspective.
+
+C. VARIABLE ELEMENTS
+List details that may change:
+- Clothing.
+- Makeup.
+- Hairstyle arrangement.
+- Location.
+- Lighting.
+- Pose.
+- Camera angle.
+
+D. QUALITY CONTROL
+Explain how to compare a new result with the reference and identify differences.
+
+IMPORTANT:
+Do not invent new facial characteristics when the reference already establishes them.
+Do not confuse a similar hairstyle or outfit with identity consistency.
+Do not claim that text alone guarantees the same identity.
+The character is fictional and adult.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 03</div>
+          <h3>Photorealistic Image Generator</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt3">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Generate detailed image prompts for a consistent fictional character.</p>
+        <div class="prompt-text" id="prompt3">Act as an expert fashion photographer, cinematographer and AI image prompt engineer.
+
+Create a detailed image-generation prompt using the character identity below.
+
+CHARACTER IDENTITY LOCK:
+[INSERT PERMANENT CHARACTER DESCRIPTION]
+
+SCENE:
+[LOCATION AND ENVIRONMENT]
+
+ACTIVITY:
+[WHAT THE CHARACTER IS DOING]
+
+CLOTHING:
+[OUTFIT]
+
+POSE AND EXPRESSION:
+[POSE AND EXPRESSION]
+
+CAMERA:
+[SHOT TYPE, ANGLE, LENS OR PERSPECTIVE]
+
+LIGHTING:
+[LIGHT SOURCE, DIRECTION AND QUALITY]
+
+VISUAL STYLE:
+[PHOTOREALISTIC / EDITORIAL / CINEMATIC / LIFESTYLE]
+
+COMPOSITION:
+[FRAMING, BACKGROUND AND DEPTH]
+
+OUTPUT REQUIREMENTS:
+
+1. Write one complete positive image prompt.
+2. Place permanent character identity before temporary scene details.
+3. Describe natural skin texture and realistic anatomy.
+4. Avoid contradictory instructions.
+5. Keep the character's defining traits consistent.
+6. Include aspect ratio and technical suggestions separately.
+7. Provide a negative prompt only when the target model supports it.
+8. Suggest three scene variations without changing the character identity.
+
+The result should look like a professionally directed photograph, not a generic AI portrait.
+
+Do not claim that a prompt guarantees identical facial features across different models.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 04</div>
+          <h3>Scene & Lifestyle Generator</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt4">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Generate original scenes while preserving the character's identity.</p>
+        <div class="prompt-text" id="prompt4">Act as a creative director for a fictional adult AI lifestyle and fashion creator.
+
+CHARACTER IDENTITY:
+[INSERT CHARACTER LOCK]
+
+BRAND PERSONALITY:
+[INSERT PERSONALITY AND BRAND STYLE]
+
+CONTENT THEME:
+[FASHION / TRAVEL / FITNESS / LIFESTYLE / BEAUTY / DAILY LIFE]
+
+CREATE [NUMBER] ORIGINAL SCENE IDEAS.
+
+For each scene provide:
+
+1. Scene title.
+2. Location and environment.
+3. Time of day and lighting.
+4. Clothing and accessories.
+5. Pose and facial expression.
+6. Camera angle and framing.
+7. Background details.
+8. A complete image-generation prompt.
+9. A short social media caption.
+
+CONSISTENCY RULES:
+- Keep the same fictional adult character.
+- Preserve defining facial and physical traits.
+- Reuse signature visual details naturally.
+- Maintain the established brand identity.
+- Change the scene, not the character.
+- Avoid repetitive poses and generic backgrounds.
+
+Make each scene visually distinct but recognizable as part of the same character's world.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 05</div>
+          <h3>AI Video & Motion Reference</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt5">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Plan a video based on a reference clip and a fictional character.</p>
+        <div class="prompt-text" id="prompt5">Act as an AI video director and motion-reference prompt specialist.
+
+CHARACTER:
+[INSERT CHARACTER IDENTITY LOCK]
+
+REFERENCE VIDEO:
+[DESCRIBE THE REFERENCE CLIP OR ATTACH IT]
+
+TARGET VIDEO:
+[DESCRIBE THE DESIRED RESULT]
+
+DURATION:
+[SECONDS]
+
+FORMAT:
+[VERTICAL 9:16 / SQUARE 1:1 / LANDSCAPE 16:9]
+
+ANALYZE THE REFERENCE:
+
+1. Main body movement.
+2. Head movement.
+3. Facial expression.
+4. Hand and arm gestures.
+5. Camera movement.
+6. Timing and rhythm.
+7. Interaction with the environment.
+
+CREATE:
+
+A. A concise motion description.
+B. A character appearance description.
+C. A video-generation prompt.
+D. A list of details that should remain stable.
+E. Potential motion and anatomy problems to check.
+F. Three alternative creative directions.
+
+IMPORTANT:
+The reference clip should guide movement and composition, not copy the identity of the person in it.
+Use a fictional adult character with appropriate rights to all supplied reference material.
+Do not promise perfect motion transfer. Results depend on the chosen model and tool.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 06</div>
+          <h3>Character Voice & Personality</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt6">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Build a coherent personality and communication style.</p>
+        <div class="prompt-text" id="prompt6">Act as a character writer, brand strategist and social media personality developer.
+
+CHARACTER:
+[INSERT CHARACTER PROFILE]
+
+TARGET AUDIENCE:
+[INSERT AUDIENCE]
+
+BRAND POSITIONING:
+[INSERT POSITIONING]
+
+Develop a consistent personality system.
+
+1. PERSONALITY
+- Core traits.
+- Strengths and weaknesses.
+- Interests and hobbies.
+- Humor and emotional tone.
+- Communication habits.
+
+2. VOICE
+- Writing style.
+- Typical vocabulary.
+- Caption style.
+- Response style.
+- Expressions and recurring phrases.
+
+3. STORYTELLING
+- Fictional background.
+- Daily routines.
+- Interests and activities.
+- Recurring themes.
+- Content boundaries.
+
+4. BRAND CONSISTENCY
+- What the character would normally post.
+- What does not fit the character.
+- How to maintain a recognizable voice.
+- How to avoid repetitive or artificial writing.
+
+5. CONTENT EXAMPLES
+Create:
+- Five short captions.
+- Three longer posts.
+- Five conversation starters.
+- Three audience engagement ideas.
+
+Keep the character fictional, clearly adult and consistent across all content.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 07</div>
+          <h3>Social Media Content Engine</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt7">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Create a practical publishing strategy for the character.</p>
+        <div class="prompt-text" id="prompt7">Act as a social media strategist specializing in fictional AI creators.
+
+CHARACTER:
+[INSERT CHARACTER IDENTITY]
+
+PLATFORMS:
+[INSTAGRAM / TIKTOK / X / YOUTUBE / OTHER]
+
+TARGET AUDIENCE:
+[INSERT AUDIENCE]
+
+CONTENT CATEGORY:
+[FASHION / LIFESTYLE / FITNESS / BEAUTY / ENTERTAINMENT]
+
+Create a 30-day content strategy.
+
+For every content idea provide:
+1. Topic.
+2. Platform.
+3. Format: image, carousel, short video or text.
+4. Visual concept.
+5. Caption.
+6. Call to action.
+7. Relevant hashtags where appropriate.
+
+STRATEGY REQUIREMENTS:
+- Maintain a consistent character identity.
+- Create a recognizable visual style.
+- Mix promotional and non-promotional content.
+- Avoid repetitive concepts.
+- Encourage genuine audience engagement.
+- Respect each platform's content and AI disclosure rules.
+
+Also provide:
+- A weekly publishing schedule.
+- Five recurring content series.
+- Ten short video concepts.
+- Five audience research questions.
+- Metrics to evaluate performance.
+
+Do not guarantee followers, reach or revenue.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 08</div>
+          <h3>Business & Monetization Strategist</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt8">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Develop a realistic business plan around a fictional AI creator.</p>
+        <div class="prompt-text" id="prompt8">Act as a digital creator business strategist and monetization consultant.
+
+PROJECT:
+A fictional adult AI character and digital creator brand.
+
+CHARACTER:
+[INSERT CHARACTER PROFILE]
+
+AVAILABLE RESOURCES:
+[BUDGET, HARDWARE, SOFTWARE AND TIME]
+
+TARGET MARKET:
+[INSERT MARKET]
+
+BUSINESS OBJECTIVE:
+[INSERT OBJECTIVE]
+
+Create a realistic business plan.
+
+1. BRAND POSITIONING
+Define the character's market, audience and unique selling proposition.
+
+2. CONTENT PRODUCTS
+Explore suitable options:
+- Public social media content.
+- Premium photo collections.
+- Subscription content.
+- Custom creative requests.
+- Digital products.
+- Other platform-compliant offerings.
+
+3. CUSTOMER JOURNEY
+Explain discovery, audience engagement, conversion, retention and repeat purchases.
+
+4. MARKETING
+Develop organic promotion strategies and a platform-specific content plan.
+
+5. FINANCIAL PLANNING
+Create conservative, moderate and optimistic scenarios.
+Clearly state all assumptions.
+Distinguish revenue from profit.
+Include platform fees, production costs and other expenses.
+
+6. RISK MANAGEMENT
+Consider platform rules, AI disclosure, intellectual property, privacy, payment restrictions and account security.
+
+7. FIRST 30 DAYS
+Provide a practical launch roadmap with measurable milestones.
+
+Do not invent guaranteed earnings, audience numbers or conversion rates.
+Use verified platform terms where available.
+Clearly distinguish estimates from confirmed facts.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 09</div>
+          <h3>Quality Control & Brand Auditor</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt9">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Evaluate whether new content matches the established character.</p>
+        <div class="prompt-text" id="prompt9">Act as a visual identity auditor and digital brand quality-control specialist.
+
+REFERENCE CHARACTER:
+[INSERT CHARACTER PROFILE AND REFERENCE]
+
+NEW CONTENT:
+[DESCRIBE OR ATTACH THE NEW IMAGE OR VIDEO]
+
+Evaluate the content using these categories:
+
+1. FACIAL CONSISTENCY
+2. HAIR AND DEFINING FEATURES
+3. BODY AND GENERAL APPEARANCE
+4. CLOTHING AND BRAND STYLE
+5. LIGHTING AND PHOTOGRAPHIC QUALITY
+6. ANATOMICAL AND VISUAL ERRORS
+7. SCENE AND ENVIRONMENT CONSISTENCY
+8. BRAND PERSONALITY
+
+For each category:
+- Identify what matches.
+- Identify what differs.
+- Explain the importance of the difference.
+- Suggest a correction.
+
+Give an overall score from 1 to 10.
+Explain the score and list the three most important improvements.
+
+Be objective. Do not claim to identify a person from an image.
+Do not treat a similar appearance as proof of identical identity.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-top">
+        <div>
+          <div class="prompt-tag">MASTERPROMPT 10</div>
+          <h3>Universal Prompt Adapter</h3>
+        </div>
+        <button class="copy-btn" data-copy="prompt10">Copy Prompt</button>
+      </div>
+      <div class="prompt-body">
+        <p>Adapt a creative prompt to the capabilities of a chosen AI model.</p>
+        <div class="prompt-text" id="prompt10">Act as an expert AI prompt engineer.
+
+TARGET TOOL OR MODEL:
+[INSERT TOOL OR MODEL]
+
+ORIGINAL PROMPT:
+[PASTE PROMPT]
+
+REFERENCE MATERIAL AVAILABLE:
+[TEXT / IMAGE / VIDEO / NONE]
+
+TASK:
+Adapt the original prompt to the target tool while preserving its creative intent.
+
+ANALYZE:
+1. The tool's supported inputs.
+2. Its prompt format and limitations.
+3. Whether it supports reference images.
+4. Whether it supports negative prompts.
+5. Available aspect ratios and output settings.
+6. Any relevant model-specific restrictions.
+
+OUTPUT:
+A. Optimized prompt.
+B. Optional negative prompt, only if supported.
+C. Recommended settings, only when verified.
+D. Instructions for using reference material.
+E. Known limitations.
+F. A short explanation of what changed.
+
+RULES:
+- Never invent unsupported features.
+- Do not assume all models interpret prompts identically.
+- Preserve permanent character identity details.
+- Separate creative instructions from technical settings.
+- State clearly when a feature needs verification.
+
+The result must be ready to copy into the selected tool.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="business">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">Creator economy</div>
+      <h2>Business & Monetization</h2>
+      <p>
+        A virtual character can become a recognizable digital brand.
+        Monetization requires consistent production, audience development
+        and a business model that complies with platform policies.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🧱</div>
+        <h3>Build the Brand</h3>
+        <ul class="feature-list">
+          <li>Choose a distinctive character identity.</li>
+          <li>Define the target audience.</li>
+          <li>Establish a recognizable visual style.</li>
+          <li>Create consistent social profiles.</li>
+          <li>Build a clear content positioning.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Content Products</h3>
+        <ul class="feature-list">
+          <li>Free social media content.</li>
+          <li>Premium image collections.</li>
+          <li>Subscription-based content.</li>
+          <li>Custom creative commissions.</li>
+          <li>Digital products and exclusive releases.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📣</div>
+        <h3>Audience Development</h3>
+        <ul class="feature-list">
+          <li>Organic social media promotion.</li>
+          <li>Consistent publishing schedule.</li>
+          <li>Audience interaction.</li>
+          <li>Content testing and analytics.</li>
+          <li>Platform-specific promotion.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔁</div>
+        <h3>Retention & Growth</h3>
+        <ul class="feature-list">
+          <li>Consistent content quality.</li>
+          <li>Clear subscription value.</li>
+          <li>Regular content updates.</li>
+          <li>Audience feedback.</li>
+          <li>Performance-based improvements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="business-panel" style="margin-top:22px">
+      <div class="section-label">Know your numbers</div>
+      <h3>Simple Revenue Calculator</h3>
+      <p>
+        Estimate gross monthly subscription revenue. This is not a forecast
+        and does not include platform fees, taxes, refunds or other expenses.
+      </p>
+
+      <div class="grid" style="margin-top:20px">
+        <div>
+          <label for="subscribers" style="font-size:13px;color:var(--muted)">Paying subscribers</label>
+          <input id="subscribers" type="number" min="0" value="50"
+          style="width:100%;padding:12px;margin-top:6px;background:#090d19;color:white;border:1px solid var(--border);border-radius:9px">
+        </div>
+        <div>
+          <label for="price" style="font-size:13px;color:var(--muted)">Monthly subscription price (USD)</label>
+          <input id="price" type="number" min="0" step="0.01" value="10"
+          style="width:100%;padding:12px;margin-top:6px;background:#090d19;color:white;border:1px solid var(--border);border-radius:9px">
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:18px;background:#090d19;border-radius:12px">
+        <div style="font-size:12px;color:var(--muted)">Estimated gross monthly revenue</div>
+        <div id="revenue" style="font-size:34px;font-weight:900;color:var(--green)">$500.00</div>
+        <div style="font-size:11px;color:var(--muted)">Before fees, taxes, refunds and expenses.</div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Business reality:</strong> Creating an AI character does not
+      guarantee sales. Revenue depends on audience demand, content quality,
+      pricing, promotion, platform availability and customer retention.
+    </div>
+  </div>
+</section>
+
+<section id="fanvue">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">Creator platform</div>
+      <h2>Fanvue Partner</h2>
+      <p>
+        Explore a creator platform that supports AI-generated creators and
+        subscription-based monetization.
+      </p>
+    </div>
+
+    <div class="fanvue">
+      <div class="eyebrow">Creator business opportunity</div>
+      <h2>Turn Your AI Character Into a Brand</h2>
+      <p>
+        Develop your character, build an audience and explore subscription
+        monetization through Fanvue. Review the platform's current creator
+        requirements, AI policies and commercial terms before launching.
+      </p>
+
+      <!-- Replace the URL below with your personal Fanvue referral link -->
+      <a
+        class="fanvue-link"
+        id="fanvueReferral"
+        href="https://www.fanvue.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Explore Fanvue ↗</a>
+
+      <small>
+        Personal referral link will be added here when configured.
+        Referral terms and eligibility are determined by Fanvue.
+      </small>
+    </div>
+
+    <div class="grid" style="margin-top:22px">
+      <div class="card">
+        <h3>Before You Launch</h3>
+        <ul class="feature-list">
+          <li>Review current creator eligibility requirements.</li>
+          <li>Understand AI creator disclosure requirements.</li>
+          <li>Check content restrictions and verification rules.</li>
+          <li>Review payment and withdrawal conditions.</li>
+          <li>Use only content and assets you have rights to use.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Referral Transparency</h3>
+        <p>
+          This page may contain a referral link. If a visitor joins through
+          an eligible referral, the site owner may receive a commission or
+          other benefit under the platform's current programme terms.
+        </p>
+        <p style="margin-top:12px">
+          Referral participation is optional. Always review the official
+          programme terms before joining.
+        </p>
+      </div>
+    </div>
+
+    <div class="notice">
+      Official resources:
+      <a href="https://www.fanvue.com/" target="_blank" rel="noopener noreferrer"><strong>Fanvue ↗</strong></a>
+      ·
+      <a href="https://www.fanvue.com/pages/affiliates" target="_blank" rel="noopener noreferrer"><strong>Partner Programme ↗</strong></a>
+      ·
+      <a href="https://legal.fanvue.com/" target="_blank" rel="noopener noreferrer"><strong>Legal & Policies ↗</strong></a>
+    </div>
+  </div>
+</section>
+
+<section id="responsible">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-label">Responsible creation</div>
+      <h2>Professional & Responsible Use</h2>
+      <p>
+        A sustainable AI creator business starts with transparency,
+        original work and respect for other people's rights.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Character Ownership</h3>
+        <p>Create original fictional characters. Do not impersonate real
+        people or use someone's likeness without appropriate permission.</p>
+      </div>
+      <div class="card">
+        <h3>Adult Content</h3>
+        <p>Any adult-oriented character must be clearly adult. Never create
+        sexualized depictions of minors or characters presented as minors.</p>
+      </div>
+      <div class="card">
+        <h3>AI Transparency</h3>
+        <p>Follow the disclosure requirements of the platforms where the
+        content is published. Do not mislead audiences about identity.</p>
+      </div>
+      <div class="card">
+        <h3>Commercial Rights</h3>
+        <p>Check model, software, music, image and video licensing before
+        commercial distribution. Platform rules can change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<a href="#" class="back-top">↑ Back to top</a>
+
+<footer>
+  <div id="site-footer"></div>
+</footer>
+
+<script>
+/* Mobile navigation */
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+/* Copy masterprompts */
+document.querySelectorAll('[data-copy]').forEach(button => {
+  button.addEventListener('click', async () => {
+    const target = document.getElementById(button.dataset.copy);
+    if (!target) return;
+
+    const text = target.innerText;
+    const originalText = button.innerText;
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand('copy');
+        textarea.remove();
+        if (!copied) throw new Error('Copy failed');
+      }
+
+      button.innerText = '✓ Copied!';
+      button.classList.add('copied');
+
+      setTimeout(() => {
+        button.innerText = originalText;
+        button.classList.remove('copied');
+      }, 1800);
+
+    } catch (error) {
+      button.innerText = 'Copy failed';
+      setTimeout(() => button.innerText = originalText, 1800);
+    }
+  });
+});
+
+/* Revenue calculator */
+const subscribers = document.getElementById('subscribers');
+const price = document.getElementById('price');
+const revenue = document.getElementById('revenue');
+
+function calculateRevenue() {
+  const count = Math.max(0, Number(subscribers.value) || 0);
+  const amount = Math.max(0, Number(price.value) || 0);
+  const total = count * amount;
+
+  revenue.textContent = total.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+}
+
+subscribers.addEventListener('input', calculateRevenue);
+price.addEventListener('input', calculateRevenue);
+calculateRevenue();
+
+/* Shared footer */
+fetch('/components/footer.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Footer could not be loaded.');
+    }
+    return response.text();
+  })
+  .then(html => {
+    const container = document.getElementById('site-footer');
+    container.innerHTML = html;
+
+    const year = container.querySelector('#footer-year');
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+  })
+  .catch(error => {
+    console.error('Footer loading error:', error);
+  });
+</script>
+
+</body>
+</html>
